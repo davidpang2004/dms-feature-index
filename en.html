@@ -1,0 +1,593 @@
+<title>DMS.app — Feature Index</title>
+<style>
+  :root{
+    --paper:#F0F1EC;
+    --paper-raised:#FFFFFF;
+    --ink:#181B22;
+    --ink-soft:#4B5160;
+    --ink-faint:#7B8090;
+    --rule:#D7D9D0;
+    --rule-strong:#B9BCB2;
+    --blue:#2F5C86;
+    --blue-soft:#E7EEF4;
+    --stamp:#B14A2C;
+    --stamp-soft:#F5E6DE;
+    --focus:#2F5C86;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --paper:#12151C;
+      --paper-raised:#1A1E27;
+      --ink:#ECEDEA;
+      --ink-soft:#9CA3B0;
+      --ink-faint:#6C7280;
+      --rule:#2A2F3A;
+      --rule-strong:#3A4150;
+      --blue:#7FB1DE;
+      --blue-soft:#1E2C3B;
+      --stamp:#E08A61;
+      --stamp-soft:#3A2620;
+      --focus:#7FB1DE;
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#12151C; --paper-raised:#1A1E27; --ink:#ECEDEA; --ink-soft:#9CA3B0;
+    --ink-faint:#6C7280; --rule:#2A2F3A; --rule-strong:#3A4150; --blue:#7FB1DE;
+    --blue-soft:#1E2C3B; --stamp:#E08A61; --stamp-soft:#3A2620; --focus:#7FB1DE;
+  }
+  :root[data-theme="light"]{
+    --paper:#F0F1EC; --paper-raised:#FFFFFF; --ink:#181B22; --ink-soft:#4B5160;
+    --ink-faint:#7B8090; --rule:#D7D9D0; --rule-strong:#B9BCB2; --blue:#2F5C86;
+    --blue-soft:#E7EEF4; --stamp:#B14A2C; --stamp-soft:#F5E6DE; --focus:#2F5C86;
+  }
+
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:Georgia,"Iowan Old Style","Palatino Linotype",serif;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  .disp{
+    font-family:"Bahnschrift","SF Compact Display","Arial Narrow",Helvetica,Arial,sans-serif;
+    font-stretch:condensed;
+    letter-spacing:.04em;
+  }
+  .mono{
+    font-family:"SF Mono","JetBrains Mono",ui-monospace,"Courier New",monospace;
+  }
+  a{color:var(--blue);}
+  ::selection{background:var(--blue-soft);}
+
+  .wrap{max-width:1180px;margin:0 auto;padding:28px 20px 90px;}
+
+  /* ---- Masthead / title block ---- */
+  .titleblock{
+    border:1.5px solid var(--ink);
+    background:var(--paper-raised);
+    display:grid;
+    grid-template-columns:1fr;
+    margin-bottom:40px;
+  }
+  .titleblock-main{
+    padding:26px 26px 20px;
+    border-bottom:1.5px solid var(--ink);
+  }
+  .tb-eyebrow{
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:.18em;
+    color:var(--ink-faint);
+    margin-bottom:10px;
+  }
+  .tb-title{
+    font-size:clamp(32px,5vw,52px);
+    text-transform:uppercase;
+    line-height:1.02;
+    text-wrap:balance;
+    margin:0 0 10px;
+  }
+  .tb-title span{color:var(--blue);}
+  .tb-sub{
+    max-width:62ch;
+    color:var(--ink-soft);
+    font-size:16.5px;
+  }
+  .tb-fields{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+  }
+  .tb-field{
+    padding:10px 18px;
+    border-right:1px solid var(--rule);
+  }
+  .tb-field:last-child{border-right:none;}
+  .tb-field-label{
+    font-size:9.5px;
+    text-transform:uppercase;
+    letter-spacing:.16em;
+    color:var(--ink-faint);
+    margin-bottom:3px;
+  }
+  .tb-field-value{
+    font-size:13px;
+    font-weight:600;
+  }
+  @media (max-width:640px){
+    .tb-fields{grid-template-columns:repeat(2,1fr);}
+    .tb-field:nth-child(2){border-right:none;}
+  }
+
+  /* ---- layout: tab index + sheets ---- */
+  .layout{
+    display:grid;
+    grid-template-columns:190px 1fr;
+    gap:36px;
+    align-items:start;
+  }
+  @media (max-width:860px){
+    .layout{grid-template-columns:1fr;}
+  }
+
+  nav.index{
+    position:sticky;
+    top:20px;
+    display:flex;
+    flex-direction:column;
+  }
+  @media (max-width:860px){
+    nav.index{
+      position:static;
+      flex-direction:row;
+      flex-wrap:wrap;
+      gap:6px 10px;
+      margin-bottom:8px;
+      padding-bottom:14px;
+      border-bottom:1px solid var(--rule);
+    }
+  }
+  .index-heading{
+    font-size:10px;
+    text-transform:uppercase;
+    letter-spacing:.16em;
+    color:var(--ink-faint);
+    margin:0 0 10px 2px;
+  }
+  @media (max-width:860px){ .index-heading{display:none;} }
+  nav.index a{
+    text-decoration:none;
+    color:var(--ink-soft);
+    font-size:13px;
+    padding:7px 8px;
+    border-left:2px solid transparent;
+    display:flex;
+    gap:8px;
+  }
+  nav.index a:hover{color:var(--ink);}
+  nav.index a:focus-visible{outline:2px solid var(--focus);outline-offset:2px;}
+  nav.index a .num{
+    font-family:"SF Mono","JetBrains Mono",ui-monospace,monospace;
+    color:var(--ink-faint);
+    font-size:11px;
+  }
+  @media (max-width:860px){
+    nav.index a{
+      border:1px solid var(--rule);
+      border-radius:3px;
+      padding:5px 9px;
+    }
+  }
+
+  main{min-width:0;}
+
+  .sheet{
+    background:var(--paper-raised);
+    border:1px solid var(--rule-strong);
+    margin-bottom:22px;
+    scroll-margin-top:20px;
+  }
+  .sheet-head{
+    display:flex;
+    align-items:baseline;
+    gap:14px;
+    padding:16px 22px 12px;
+    border-bottom:1px solid var(--rule);
+  }
+  .sheet-num{
+    font-family:"SF Mono","JetBrains Mono",ui-monospace,monospace;
+    font-size:12px;
+    color:var(--blue);
+    border:1px solid var(--blue);
+    padding:1px 6px;
+    flex:none;
+  }
+  .sheet-title{
+    font-size:20px;
+    text-transform:uppercase;
+    margin:0;
+    flex:1;
+  }
+  .sheet-desc{
+    padding:12px 22px 4px;
+    color:var(--ink-soft);
+    font-size:14.5px;
+    max-width:70ch;
+  }
+  .flist{
+    list-style:none;
+    margin:0;
+    padding:6px 22px 20px;
+    display:grid;
+    gap:0;
+  }
+  .flist li{
+    padding:10px 0;
+    border-top:1px solid var(--rule);
+    font-size:14.5px;
+  }
+  .flist li:first-child{border-top:none;}
+  .flist b{font-weight:700;}
+  .flist .dash{color:var(--ink-faint);}
+
+  /* ---- audience appendix ---- */
+  .appendix-head{
+    margin:56px 0 18px;
+    padding-top:22px;
+    border-top:2px solid var(--ink);
+  }
+  .appendix-eyebrow{
+    font-size:11px;text-transform:uppercase;letter-spacing:.18em;color:var(--ink-faint);
+  }
+  .appendix-title{
+    font-size:26px;text-transform:uppercase;margin:6px 0 8px;
+  }
+  .appendix-sub{color:var(--ink-soft);font-size:15px;max-width:68ch;}
+
+  .aud-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+    gap:16px;
+    margin-top:22px;
+  }
+  .aud-card{
+    background:var(--paper-raised);
+    border:1px solid var(--rule-strong);
+    padding:18px 18px 16px;
+    position:relative;
+  }
+  .aud-stamp{
+    display:inline-block;
+    font-family:"Bahnschrift","SF Compact Display","Arial Narrow",sans-serif;
+    font-size:10.5px;
+    text-transform:uppercase;
+    letter-spacing:.12em;
+    color:var(--stamp);
+    border:1.5px solid var(--stamp);
+    background:var(--stamp-soft);
+    padding:3px 8px;
+    transform:rotate(-2deg);
+    margin-bottom:12px;
+  }
+  .aud-card h3{
+    font-size:17px;
+    margin:0 0 10px;
+    text-wrap:balance;
+  }
+  .aud-card ul{
+    margin:0;padding:0;list-style:none;
+    display:flex;flex-direction:column;gap:6px;
+  }
+  .aud-card li{
+    font-size:13.5px;
+    color:var(--ink-soft);
+    padding-left:14px;
+    position:relative;
+  }
+  .aud-card li::before{
+    content:"";
+    position:absolute;left:0;top:.55em;
+    width:6px;height:1.5px;
+    background:var(--blue);
+  }
+
+  footer{
+    margin-top:56px;
+    padding-top:16px;
+    border-top:1px solid var(--rule);
+    color:var(--ink-faint);
+    font-size:12px;
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:8px;
+  }
+
+  @media (prefers-reduced-motion:no-preference){
+    .sheet{transition:border-color .15s ease;}
+    nav.index a{transition:color .15s ease,border-color .15s ease;}
+  }
+</style>
+
+<div class="wrap">
+
+  <div class="titleblock">
+    <div class="titleblock-main">
+      <div class="tb-eyebrow disp">Product Reference — Internal Use</div>
+      <h1 class="tb-title disp">DMS<span>.app</span></h1>
+      <p class="tb-sub">A document and photo management system that stores real files on your own drive — organized as a folder tree, searchable by content, and equally at home managing a family archive or an industrial equipment databook.</p>
+    </div>
+    <div class="tb-fields">
+      <div class="tb-field">
+        <div class="tb-field-label disp">Document</div>
+        <div class="tb-field-value mono">Feature Index</div>
+      </div>
+      <div class="tb-field">
+        <div class="tb-field-label disp">Storage Model</div>
+        <div class="tb-field-value mono">Local files, own hardware</div>
+      </div>
+      <div class="tb-field">
+        <div class="tb-field-label disp">Platforms</div>
+        <div class="tb-field-value mono">macOS · Windows · LAN</div>
+      </div>
+      <div class="tb-field">
+        <div class="tb-field-label disp">Sheets</div>
+        <div class="tb-field-value mono">01–11 + Audience Index</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="layout">
+    <nav class="index" aria-label="Section index">
+      <div class="index-heading disp">Sheets</div>
+      <a href="#organize"><span class="num mono">01</span> Organize</a>
+      <a href="#capture"><span class="num mono">02</span> Capture &amp; Import</a>
+      <a href="#view"><span class="num mono">03</span> View &amp; Merge</a>
+      <a href="#search"><span class="num mono">04</span> Search &amp; Extraction</a>
+      <a href="#ai"><span class="num mono">05</span> AI Assist</a>
+      <a href="#faces"><span class="num mono">06</span> Photos &amp; Faces</a>
+      <a href="#databook"><span class="num mono">07</span> Databook Output</a>
+      <a href="#share"><span class="num mono">08</span> Share &amp; Remote</a>
+      <a href="#backup"><span class="num mono">09</span> Backup &amp; Portability</a>
+      <a href="#security"><span class="num mono">10</span> Security &amp; Access</a>
+      <a href="#anywhere"><span class="num mono">11</span> Runs Anywhere</a>
+      <a href="#audience"><span class="num mono">＋</span> By Audience</a>
+    </nav>
+
+    <main>
+
+      <section class="sheet" id="organize">
+        <div class="sheet-head">
+          <span class="sheet-num">01</span>
+          <h2 class="sheet-title disp">Organize</h2>
+        </div>
+        <p class="sheet-desc">A folder tree that mirrors how the work is actually structured — an assembly, a property, a family filing cabinet.</p>
+        <ul class="flist">
+          <li><b>Hierarchical folder tree</b><span class="dash"> — </span>build nested folders that match a real assembly, org, or filing structure.</li>
+          <li><b>Drag to reorder or move</b><span class="dash"> — </span>the underlying files on disk move with the folder, automatically.</li>
+          <li><b>Serial number field per folder</b><span class="dash"> — </span>keep consistent asset or item numbering built into the tree itself.</li>
+          <li><b>Recycle bin, not permanent delete</b><span class="dash"> — </span>deleted items land in a "Not Show in Tree" bin and can be restored.</li>
+          <li><b>Bulk hierarchy import</b><span class="dash"> — </span>build hundreds of folders in one pass from a simple CSV-style definition file, including bill-of-materials structures where the same part name legitimately repeats under different parents.</li>
+          <li><b>Preview before you commit</b><span class="dash"> — </span>check an imported hierarchy for errors before it's created.</li>
+          <li><b>Real folders on disk</b><span class="dash"> — </span>the tree is mirrored as an actual folder structure, not just a database record.</li>
+          <li><b>Photo-root auto-sorting</b><span class="dash"> — </span>designate a folder that automatically files incoming photos by year and month.</li>
+        </ul>
+      </section>
+
+      <section class="sheet" id="capture">
+        <div class="sheet-head">
+          <span class="sheet-num">02</span>
+          <h2 class="sheet-title disp">Capture &amp; Import</h2>
+        </div>
+        <p class="sheet-desc">Getting documents in should be as easy as the moment you have them in hand.</p>
+        <ul class="flist">
+          <li><b>Drag-and-drop upload</b><span class="dash"> — </span>drop files straight from the desktop or Finder/Explorer.</li>
+          <li><b>Paste from clipboard</b><span class="dash"> — </span>Cmd/Ctrl+V a screenshot directly into a folder, no save-then-upload step.</li>
+          <li><b>Mobile capture via QR code</b><span class="dash"> — </span>scan a code, take a phone photo, and it lands straight in the right folder.</li>
+          <li><b>Batch ZIP import</b><span class="dash"> — </span>drop in a whole ZIP archive and DMS sorts the contents into folders automatically.</li>
+          <li><b>Duplicate detection</b><span class="dash"> — </span>flags files already in the library on upload — skip, link to the existing copy, or upload anyway.</li>
+          <li><b>HEIC support</b><span class="dash"> — </span>iPhone photos preview correctly without a manual conversion step.</li>
+          <li><b>EXIF-aware photo filing</b><span class="dash"> — </span>reads GPS and capture date from photos, with reverse geocoding, to auto-file them by year, month, and place.</li>
+        </ul>
+      </section>
+
+      <section class="sheet" id="view">
+        <div class="sheet-head">
+          <span class="sheet-num">03</span>
+          <h2 class="sheet-title disp">View &amp; Merge</h2>
+        </div>
+        <p class="sheet-desc">Read and consolidate documents without leaving the browser.</p>
+        <ul class="flist">
+          <li><b>In-browser preview</b><span class="dash"> — </span>PDFs, images, and Office files open directly, no download required.</li>
+          <li><b>Combine documents into one PDF</b><span class="dash"> — </span>merge any selected scans or files into a single PDF and file it back into a folder; originals stay safely in storage.</li>
+          <li><b>Open in native app</b><span class="dash"> — </span>one click hands a document off to the default OS viewer or editor.</li>
+        </ul>
+      </section>
+
+      <section class="sheet" id="search">
+        <div class="sheet-head">
+          <span class="sheet-num">04</span>
+          <h2 class="sheet-title disp">Search &amp; Data Extraction</h2>
+        </div>
+        <p class="sheet-desc">Find anything, and pull structured data straight out of a scanned page.</p>
+        <ul class="flist">
+          <li><b>Live search</b><span class="dash"> — </span>filters instantly across filenames, OCR'd text, and metadata.</li>
+          <li><b>Automatic OCR</b><span class="dash"> — </span>scanned PDFs and images get OCR'd on the spot, multi-language, with a force-OCR override for stubborn scans.</li>
+          <li><b>Garbled-text detection</b><span class="dash"> — </span>catches bad OCR output before it pollutes search results.</li>
+          <li><b>Custom key-parameter extraction</b><span class="dash"> — </span>define labels like "Max Working Pressure" or "Serial No." and pull their values straight out of a document's text.</li>
+          <li><b>Structured results</b><span class="dash"> — </span>each match is split into value, unit, and description — not one raw text blob.</li>
+          <li><b>Repeated-key handling</b><span class="dash"> — </span>a label that appears more than once in a document is captured as separate, numbered results.</li>
+          <li><b>CSV metadata export</b><span class="dash"> — </span>every document and its metadata, one row each, ready to open in Excel.</li>
+        </ul>
+      </section>
+
+      <section class="sheet" id="ai">
+        <div class="sheet-head">
+          <span class="sheet-num">05</span>
+          <h2 class="sheet-title disp">AI Assist</h2>
+        </div>
+        <p class="sheet-desc">Opt-in, bring-your-own API key — for the documents plain search and regex can't handle.</p>
+        <ul class="flist">
+          <li><b>AI-powered key extraction</b><span class="dash"> — </span>reads a document's actual page images to pull key values out of layouts that defeat text-pattern matching.</li>
+          <li><b>Ask AI across the whole project</b><span class="dash"> — </span>ask a plain-language question over every document (or one folder) and get an answer with citations back to the source files.</li>
+          <li><b>Guided key setup</b><span class="dash"> — </span>in-app instructions for getting and saving a Gemini API key, encrypted at rest.</li>
+        </ul>
+      </section>
+
+      <section class="sheet" id="faces">
+        <div class="sheet-head">
+          <span class="sheet-num">06</span>
+          <h2 class="sheet-title disp">Photos &amp; Face Recognition</h2>
+        </div>
+        <p class="sheet-desc">For libraries where the photos are as important as the paperwork.</p>
+        <ul class="flist">
+          <li><b>Tag a face once</b><span class="dash"> — </span>DMS builds a People directory automatically from that point on.</li>
+          <li><b>Click a person, see every photo</b><span class="dash"> — </span>the People view collects every appearance across the library.</li>
+          <li><b>Auto-scan for matches</b><span class="dash"> — </span>find more photos of a tagged person (or everyone) in a folder or the whole library, with an adjustable match-confidence threshold.</li>
+          <li><b>One-click engine setup</b><span class="dash"> — </span>guided installer for the underlying face-recognition engine, with live progress.</li>
+          <li><b>Clean removal</b><span class="dash"> — </span>delete a person and every one of their tags in a single action.</li>
+        </ul>
+      </section>
+
+      <section class="sheet" id="databook">
+        <div class="sheet-head">
+          <span class="sheet-num">07</span>
+          <h2 class="sheet-title disp">Databook Output</h2>
+        </div>
+        <p class="sheet-desc">Turn a folder tree into a bound handoff package, in one click.</p>
+        <ul class="flist">
+          <li><b>Generate a bound PDF databook</b><span class="dash"> — </span>from any set of documents across the tree, with an auto-built cover page, table of contents, and per-section bookmarks.</li>
+          <li><b>Structure follows your tree</b><span class="dash"> — </span>folder order, serial numbers, and paths become the databook's section structure.</li>
+          <li><b>Custom front page</b><span class="dash"> — </span>insert your own cover ahead of the auto-generated one.</li>
+          <li><b>Photo sections handled automatically</b><span class="dash"> — </span>image-only folders convert into print-ready PDF pages.</li>
+        </ul>
+      </section>
+
+      <section class="sheet" id="share">
+        <div class="sheet-head">
+          <span class="sheet-num">08</span>
+          <h2 class="sheet-title disp">Share &amp; Remote Access</h2>
+        </div>
+        <p class="sheet-desc">Get a document — or a whole upload point — to someone who isn't in front of the same computer.</p>
+        <ul class="flist">
+          <li><b>Send to Phone</b><span class="dash"> — </span>generates a one-hour download link and texts it via iMessage/SMS (Mac) or Phone Link (Windows) — no app needed on the receiving end.</li>
+          <li><b>Send by email</b><span class="dash"> — </span>attach and send a document directly from the app.</li>
+          <li><b>Remote Upload link</b><span class="dash"> — </span>a public link with a QR code that lets a colleague or contractor upload straight into the project from anywhere, no account required.</li>
+          <li><b>Built-in secure tunnel</b><span class="dash"> — </span>remote links work with no router or port configuration on your end.</li>
+          <li><b>Same-network access</b><span class="dash"> — </span>other devices on the same Wi-Fi connect directly — no internet dependency at all.</li>
+        </ul>
+      </section>
+
+      <section class="sheet" id="backup">
+        <div class="sheet-head">
+          <span class="sheet-num">09</span>
+          <h2 class="sheet-title disp">Backup &amp; Portability</h2>
+        </div>
+        <p class="sheet-desc">Nothing here is locked in. The files are yours, in formats anything can open.</p>
+        <ul class="flist">
+          <li><b>Real files, standard formats</b><span class="dash"> — </span>PDFs and images sit in normal folders on disk, never a proprietary blob.</li>
+          <li><b>Cloud sync for free</b><span class="dash"> — </span>point the storage folder at OneDrive, Dropbox, or iCloud and syncing just happens.</li>
+          <li><b>Automatic rolling backups</b><span class="dash"> — </span>the most recent backups are kept, older ones auto-archived rather than silently deleted.</li>
+          <li><b>Flexible manual export</b><span class="dash"> — </span>metadata only, a complete backup with every file, or just selected folders.</li>
+          <li><b>Import and inspect</b><span class="dash"> — </span>restore a backup file, or check what's inside one before committing to the import.</li>
+          <li><b>Guided OneDrive setup</b><span class="dash"> — </span>step-by-step instructions built into the app.</li>
+        </ul>
+      </section>
+
+      <section class="sheet" id="security">
+        <div class="sheet-head">
+          <span class="sheet-num">10</span>
+          <h2 class="sheet-title disp">Security &amp; Access</h2>
+        </div>
+        <p class="sheet-desc">Lock down the whole library, or just the sensitive parts of it.</p>
+        <ul class="flist">
+          <li><b>Library-wide password</b><span class="dash"> — </span>optional login screen protecting the entire application, salted and hashed.</li>
+          <li><b>Per-folder credential storage</b><span class="dash"> — </span>save a login (URL, account, password) against a specific folder — e.g. an equipment portal — decrypted only when you click reveal.</li>
+          <li><b>Self-expiring share links</b><span class="dash"> — </span>every "Send to Phone" link stops working after one hour.</li>
+          <li><b>Secrets encrypted at rest</b><span class="dash"> — </span>API keys, folder passwords, and email credentials are never stored in plain text.</li>
+        </ul>
+      </section>
+
+      <section class="sheet" id="anywhere">
+        <div class="sheet-head">
+          <span class="sheet-num">11</span>
+          <h2 class="sheet-title disp">Runs Anywhere, Speaks Two Languages</h2>
+        </div>
+        <p class="sheet-desc">Low-friction install, low-friction daily use.</p>
+        <ul class="flist">
+          <li><b>One-click desktop launcher</b><span class="dash"> — </span>for Mac and Windows, installs its own missing dependencies automatically.</li>
+          <li><b>Fully bilingual UI</b><span class="dash"> — </span>Chinese and English throughout, switchable instantly.</li>
+          <li><b>Translated guides, in-app</b><span class="dash"> — </span>setup instructions and a full user manual, downloadable in either language.</li>
+          <li><b>Self-healing launch</b><span class="dash"> — </span>detects a stale or crashed prior session and clears the port automatically, rather than failing to start.</li>
+        </ul>
+      </section>
+
+      <div class="appendix-head" id="audience">
+        <div class="appendix-eyebrow disp">Audience Index</div>
+        <h2 class="appendix-title disp">Who It's For</h2>
+        <p class="appendix-sub">The same underlying system, pointed at very different filing cabinets. A few of the sheets above that matter most to each.</p>
+      </div>
+
+      <div class="aud-grid">
+        <div class="aud-card">
+          <span class="aud-stamp">Industrial / Engineering</span>
+          <h3>Assembly &amp; equipment databooks</h3>
+          <ul>
+            <li>Serial-numbered assembly hierarchy, built in bulk from a BOM</li>
+            <li>Design-vs-actual key parameters, pulled straight out of scanned drawings</li>
+            <li>One-click bound databook: cover, TOC, bookmarks</li>
+            <li>Per-asset credential storage for equipment portals</li>
+          </ul>
+        </div>
+        <div class="aud-card">
+          <span class="aud-stamp">Facilities / Field Ops</span>
+          <h3>Equipment &amp; site records</h3>
+          <ul>
+            <li>QR mobile capture — photo an asset, it files itself</li>
+            <li>GPS + date auto-organizing for site photos</li>
+            <li>Remote Upload link for contractors, no account needed</li>
+            <li>Same-network access on the shop floor, no internet required</li>
+          </ul>
+        </div>
+        <div class="aud-card">
+          <span class="aud-stamp">Small Business / Admin</span>
+          <h3>Records, contracts, invoices</h3>
+          <ul>
+            <li>CSV metadata export for bookkeeping</li>
+            <li>Library-wide password protection</li>
+            <li>Send to Phone / email for quick client handoffs</li>
+            <li>Free backup via existing OneDrive or Dropbox</li>
+          </ul>
+        </div>
+        <div class="aud-card">
+          <span class="aud-stamp">Family / Personal</span>
+          <h3>Medical, insurance, estate &amp; everyday documents</h3>
+          <ul>
+            <li>Medical records &amp; HSA/FSA receipts — OCR'd and searchable, so a $340 dermatology bill from March is easy to find again at reimbursement time; export a year's receipts to CSV for taxes</li>
+            <li>Insurance policies — home, auto, health, life — one per folder, with policy number, coverage, and expiration pulled out automatically</li>
+            <li>Wills &amp; living wills — password-protected, backed up as real files your family can open without an account when it matters most</li>
+            <li>College applications &amp; everyday paperwork — one folder per child, drag-and-drop scans, phone-camera upload with no app to install</li>
+            <li>Face recognition — browse the family photo library by person, in a bilingual interface for multi-language households</li>
+          </ul>
+        </div>
+        <div class="aud-card">
+          <span class="aud-stamp">Photography / Events</span>
+          <h3>Shoots, albums, guest photos</h3>
+          <ul>
+            <li>People view — tag once, find every photo of someone</li>
+            <li>Batch ZIP import of a full shoot in one drop</li>
+            <li>Auto-organizing by capture date and location</li>
+            <li>Combine selected shots into a single deliverable PDF</li>
+          </ul>
+        </div>
+      </div>
+
+      <footer>
+        <span>DMS.app — Feature Index</span>
+        <span>Compiled from the current codebase for marketing reference</span>
+      </footer>
+
+    </main>
+  </div>
+</div>

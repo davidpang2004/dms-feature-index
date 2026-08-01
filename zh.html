@@ -1,0 +1,588 @@
+<title>DMS.app — 功能索引</title>
+<style>
+  :root{
+    --paper:#F0F1EC;
+    --paper-raised:#FFFFFF;
+    --ink:#181B22;
+    --ink-soft:#4B5160;
+    --ink-faint:#7B8090;
+    --rule:#D7D9D0;
+    --rule-strong:#B9BCB2;
+    --blue:#2F5C86;
+    --blue-soft:#E7EEF4;
+    --stamp:#B14A2C;
+    --stamp-soft:#F5E6DE;
+    --focus:#2F5C86;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --paper:#12151C;
+      --paper-raised:#1A1E27;
+      --ink:#ECEDEA;
+      --ink-soft:#9CA3B0;
+      --ink-faint:#6C7280;
+      --rule:#2A2F3A;
+      --rule-strong:#3A4150;
+      --blue:#7FB1DE;
+      --blue-soft:#1E2C3B;
+      --stamp:#E08A61;
+      --stamp-soft:#3A2620;
+      --focus:#7FB1DE;
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#12151C; --paper-raised:#1A1E27; --ink:#ECEDEA; --ink-soft:#9CA3B0;
+    --ink-faint:#6C7280; --rule:#2A2F3A; --rule-strong:#3A4150; --blue:#7FB1DE;
+    --blue-soft:#1E2C3B; --stamp:#E08A61; --stamp-soft:#3A2620; --focus:#7FB1DE;
+  }
+  :root[data-theme="light"]{
+    --paper:#F0F1EC; --paper-raised:#FFFFFF; --ink:#181B22; --ink-soft:#4B5160;
+    --ink-faint:#7B8090; --rule:#D7D9D0; --rule-strong:#B9BCB2; --blue:#2F5C86;
+    --blue-soft:#E7EEF4; --stamp:#B14A2C; --stamp-soft:#F5E6DE; --focus:#2F5C86;
+  }
+
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:"PingFang SC","Microsoft YaHei","Noto Sans SC","Hiragino Sans GB",sans-serif;
+    line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+  }
+  .disp{
+    font-family:"PingFang SC","Microsoft YaHei","Noto Sans SC",sans-serif;
+    font-weight:700;
+    letter-spacing:.02em;
+  }
+  .mono{
+    font-family:"SF Mono","JetBrains Mono",ui-monospace,"Courier New",monospace;
+  }
+  a{color:var(--blue);}
+  ::selection{background:var(--blue-soft);}
+
+  .wrap{max-width:1180px;margin:0 auto;padding:28px 20px 90px;}
+
+  /* ---- Masthead / title block ---- */
+  .titleblock{
+    border:1.5px solid var(--ink);
+    background:var(--paper-raised);
+    display:grid;
+    grid-template-columns:1fr;
+    margin-bottom:40px;
+  }
+  .titleblock-main{
+    padding:26px 26px 20px;
+    border-bottom:1.5px solid var(--ink);
+  }
+  .tb-eyebrow{
+    font-size:12px;
+    letter-spacing:.14em;
+    color:var(--ink-faint);
+    margin-bottom:10px;
+  }
+  .tb-title{
+    font-size:clamp(32px,5vw,52px);
+    line-height:1.05;
+    text-wrap:balance;
+    margin:0 0 12px;
+  }
+  .tb-title span{color:var(--blue);}
+  .tb-sub{
+    max-width:34em;
+    color:var(--ink-soft);
+    font-size:16.5px;
+  }
+  .tb-fields{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+  }
+  .tb-field{
+    padding:10px 18px;
+    border-right:1px solid var(--rule);
+  }
+  .tb-field:last-child{border-right:none;}
+  .tb-field-label{
+    font-size:11px;
+    letter-spacing:.1em;
+    color:var(--ink-faint);
+    margin-bottom:3px;
+  }
+  .tb-field-value{
+    font-size:13.5px;
+    font-weight:600;
+  }
+  @media (max-width:640px){
+    .tb-fields{grid-template-columns:repeat(2,1fr);}
+    .tb-field:nth-child(2){border-right:none;}
+  }
+
+  /* ---- layout: tab index + sheets ---- */
+  .layout{
+    display:grid;
+    grid-template-columns:190px 1fr;
+    gap:36px;
+    align-items:start;
+  }
+  @media (max-width:860px){
+    .layout{grid-template-columns:1fr;}
+  }
+
+  nav.index{
+    position:sticky;
+    top:20px;
+    display:flex;
+    flex-direction:column;
+  }
+  @media (max-width:860px){
+    nav.index{
+      position:static;
+      flex-direction:row;
+      flex-wrap:wrap;
+      gap:6px 10px;
+      margin-bottom:8px;
+      padding-bottom:14px;
+      border-bottom:1px solid var(--rule);
+    }
+  }
+  .index-heading{
+    font-size:11px;
+    letter-spacing:.1em;
+    color:var(--ink-faint);
+    margin:0 0 10px 2px;
+  }
+  @media (max-width:860px){ .index-heading{display:none;} }
+  nav.index a{
+    text-decoration:none;
+    color:var(--ink-soft);
+    font-size:13.5px;
+    padding:7px 8px;
+    border-left:2px solid transparent;
+    display:flex;
+    gap:8px;
+  }
+  nav.index a:hover{color:var(--ink);}
+  nav.index a:focus-visible{outline:2px solid var(--focus);outline-offset:2px;}
+  nav.index a .num{
+    font-family:"SF Mono","JetBrains Mono",ui-monospace,monospace;
+    color:var(--ink-faint);
+    font-size:11px;
+  }
+  @media (max-width:860px){
+    nav.index a{
+      border:1px solid var(--rule);
+      border-radius:3px;
+      padding:5px 9px;
+    }
+  }
+
+  main{min-width:0;}
+
+  .sheet{
+    background:var(--paper-raised);
+    border:1px solid var(--rule-strong);
+    margin-bottom:22px;
+    scroll-margin-top:20px;
+  }
+  .sheet-head{
+    display:flex;
+    align-items:baseline;
+    gap:14px;
+    padding:16px 22px 12px;
+    border-bottom:1px solid var(--rule);
+  }
+  .sheet-num{
+    font-family:"SF Mono","JetBrains Mono",ui-monospace,monospace;
+    font-size:12px;
+    color:var(--blue);
+    border:1px solid var(--blue);
+    padding:1px 6px;
+    flex:none;
+  }
+  .sheet-title{
+    font-size:19px;
+    margin:0;
+    flex:1;
+  }
+  .sheet-desc{
+    padding:12px 22px 4px;
+    color:var(--ink-soft);
+    font-size:14.5px;
+    max-width:38em;
+  }
+  .flist{
+    list-style:none;
+    margin:0;
+    padding:6px 22px 20px;
+    display:grid;
+    gap:0;
+  }
+  .flist li{
+    padding:11px 0;
+    border-top:1px solid var(--rule);
+    font-size:14.5px;
+  }
+  .flist li:first-child{border-top:none;}
+  .flist b{font-weight:700;}
+  .flist .dash{color:var(--ink-faint);}
+
+  /* ---- audience appendix ---- */
+  .appendix-head{
+    margin:56px 0 18px;
+    padding-top:22px;
+    border-top:2px solid var(--ink);
+  }
+  .appendix-eyebrow{
+    font-size:12px;letter-spacing:.14em;color:var(--ink-faint);
+  }
+  .appendix-title{
+    font-size:26px;margin:6px 0 8px;
+  }
+  .appendix-sub{color:var(--ink-soft);font-size:15px;max-width:36em;}
+
+  .aud-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+    gap:16px;
+    margin-top:22px;
+  }
+  .aud-card{
+    background:var(--paper-raised);
+    border:1px solid var(--rule-strong);
+    padding:18px 18px 16px;
+    position:relative;
+  }
+  .aud-stamp{
+    display:inline-block;
+    font-family:"PingFang SC","Microsoft YaHei","Noto Sans SC",sans-serif;
+    font-weight:700;
+    font-size:11.5px;
+    letter-spacing:.06em;
+    color:var(--stamp);
+    border:1.5px solid var(--stamp);
+    background:var(--stamp-soft);
+    padding:3px 9px;
+    transform:rotate(-2deg);
+    margin-bottom:12px;
+  }
+  .aud-card h3{
+    font-size:16.5px;
+    margin:0 0 10px;
+    text-wrap:balance;
+  }
+  .aud-card ul{
+    margin:0;padding:0;list-style:none;
+    display:flex;flex-direction:column;gap:6px;
+  }
+  .aud-card li{
+    font-size:13.5px;
+    color:var(--ink-soft);
+    padding-left:14px;
+    position:relative;
+  }
+  .aud-card li::before{
+    content:"";
+    position:absolute;left:0;top:.6em;
+    width:6px;height:1.5px;
+    background:var(--blue);
+  }
+
+  footer{
+    margin-top:56px;
+    padding-top:16px;
+    border-top:1px solid var(--rule);
+    color:var(--ink-faint);
+    font-size:12px;
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:8px;
+  }
+
+  @media (prefers-reduced-motion:no-preference){
+    .sheet{transition:border-color .15s ease;}
+    nav.index a{transition:color .15s ease,border-color .15s ease;}
+  }
+</style>
+
+<div class="wrap">
+
+  <div class="titleblock">
+    <div class="titleblock-main">
+      <div class="tb-eyebrow disp">产品参考资料 · 内部使用</div>
+      <h1 class="tb-title disp">DMS<span>.app</span></h1>
+      <p class="tb-sub">一个文档与照片管理系统——把真实文件保存在你自己的硬盘上，以文件夹树的形式组织，可按内容搜索。无论是管理一份家庭档案，还是一套工业设备资料手册（Databook），都同样得心应手。</p>
+    </div>
+    <div class="tb-fields">
+      <div class="tb-field">
+        <div class="tb-field-label disp">文档</div>
+        <div class="tb-field-value mono">功能索引</div>
+      </div>
+      <div class="tb-field">
+        <div class="tb-field-label disp">存储方式</div>
+        <div class="tb-field-value mono">本地文件，掌握在自己手中</div>
+      </div>
+      <div class="tb-field">
+        <div class="tb-field-label disp">支持平台</div>
+        <div class="tb-field-value mono">macOS · Windows · 局域网</div>
+      </div>
+      <div class="tb-field">
+        <div class="tb-field-label disp">分页</div>
+        <div class="tb-field-value mono">01–11 + 受众索引</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="layout">
+    <nav class="index" aria-label="章节索引">
+      <div class="index-heading disp">分页目录</div>
+      <a href="#organize"><span class="num mono">01</span> 组织架构</a>
+      <a href="#capture"><span class="num mono">02</span> 采集与导入</a>
+      <a href="#view"><span class="num mono">03</span> 查看与合并</a>
+      <a href="#search"><span class="num mono">04</span> 搜索与数据提取</a>
+      <a href="#ai"><span class="num mono">05</span> AI 辅助</a>
+      <a href="#faces"><span class="num mono">06</span> 照片与人脸</a>
+      <a href="#databook"><span class="num mono">07</span> 资料手册生成</a>
+      <a href="#share"><span class="num mono">08</span> 分享与远程访问</a>
+      <a href="#backup"><span class="num mono">09</span> 备份与可迁移性</a>
+      <a href="#security"><span class="num mono">10</span> 安全与权限</a>
+      <a href="#anywhere"><span class="num mono">11</span> 随处可用</a>
+      <a href="#audience"><span class="num mono">＋</span> 按受众分类</a>
+    </nav>
+
+    <main>
+
+      <section class="sheet" id="organize">
+        <div class="sheet-head">
+          <span class="sheet-num">01</span>
+          <h2 class="sheet-title disp">组织架构</h2>
+        </div>
+        <p class="sheet-desc">让文件夹树真正贴合实际的工作结构——无论是一套设备总成、一个组织，还是一个家庭档案柜。</p>
+        <ul class="flist">
+          <li><b>层级文件夹树</b><span class="dash"> — </span>按真实的总成、组织或归档结构搭建多级文件夹。</li>
+          <li><b>拖拽排序或移动</b><span class="dash"> — </span>移动文件夹时，磁盘上对应的真实文件会自动一起移动。</li>
+          <li><b>每个文件夹可设序列号</b><span class="dash"> — </span>在文件夹树内直接维护统一的资产/物料编号。</li>
+          <li><b>回收站，而非彻底删除</b><span class="dash"> — </span>删除的内容会进入"不在树中显示"回收站，可随时恢复。</li>
+          <li><b>批量导入层级结构</b><span class="dash"> — </span>通过简单的 CSV 格式定义文件，一次性建立成百上千个文件夹，也支持物料清单（BOM）中同一部件名合法地出现在不同上级下的情况。</li>
+          <li><b>导入前预览</b><span class="dash"> — </span>在真正创建之前，先检查导入的层级结构是否有误。</li>
+          <li><b>磁盘上的真实文件夹</b><span class="dash"> — </span>文件夹树会同步映射为磁盘上真实存在的文件夹，而不仅是数据库记录。</li>
+          <li><b>照片根目录自动归档</b><span class="dash"> — </span>指定一个文件夹，让新增照片自动按年、月归类。</li>
+        </ul>
+      </section>
+
+      <section class="sheet" id="capture">
+        <div class="sheet-head">
+          <span class="sheet-num">02</span>
+          <h2 class="sheet-title disp">采集与导入</h2>
+        </div>
+        <p class="sheet-desc">拿到文件的那一刻，就应该能立刻存进去。</p>
+        <ul class="flist">
+          <li><b>拖放上传</b><span class="dash"> — </span>直接从桌面或访达/资源管理器拖入文件。</li>
+          <li><b>剪贴板粘贴</b><span class="dash"> — </span>Cmd/Ctrl+V 直接把截图粘贴进文件夹，无需先保存再上传。</li>
+          <li><b>手机扫码采集</b><span class="dash"> — </span>扫描二维码，用手机拍照，照片直接进入对应文件夹。</li>
+          <li><b>ZIP 批量导入</b><span class="dash"> — </span>拖入一整个 ZIP 压缩包，DMS 自动把内容分类归档。</li>
+          <li><b>重复文件检测</b><span class="dash"> — </span>上传时自动识别库中已存在的文件——可选择跳过、关联到已有文件，或仍然上传。</li>
+          <li><b>支持 HEIC 格式</b><span class="dash"> — </span>iPhone 拍摄的照片无需手动转换即可正常预览。</li>
+          <li><b>识别照片 EXIF 信息</b><span class="dash"> — </span>读取照片的 GPS 位置与拍摄日期，并进行逆地理编码，自动按年、月、地点归档。</li>
+        </ul>
+      </section>
+
+      <section class="sheet" id="view">
+        <div class="sheet-head">
+          <span class="sheet-num">03</span>
+          <h2 class="sheet-title disp">查看与合并</h2>
+        </div>
+        <p class="sheet-desc">无需离开浏览器即可阅读与整合文件。</p>
+        <ul class="flist">
+          <li><b>浏览器内直接预览</b><span class="dash"> — </span>PDF、图片、Office 文件均可直接打开，无需下载。</li>
+          <li><b>合并为单个 PDF</b><span class="dash"> — </span>将选中的多份扫描件或文件合并为一个 PDF，并归档到指定文件夹；原始文件仍安全保留在存储中。</li>
+          <li><b>一键用原生应用打开</b><span class="dash"> — </span>交给系统默认的查看器或编辑器处理。</li>
+        </ul>
+      </section>
+
+      <section class="sheet" id="search">
+        <div class="sheet-head">
+          <span class="sheet-num">04</span>
+          <h2 class="sheet-title disp">搜索与数据提取</h2>
+        </div>
+        <p class="sheet-desc">快速找到任何内容，并从扫描件中直接提取结构化数据。</p>
+        <ul class="flist">
+          <li><b>实时搜索</b><span class="dash"> — </span>即时匹配文件名、OCR 识别文本与元数据。</li>
+          <li><b>自动 OCR 识别</b><span class="dash"> — </span>扫描版 PDF 与图片自动完成文字识别，支持多语言，遇到顽固扫描件可强制 OCR。</li>
+          <li><b>乱码文本检测</b><span class="dash"> — </span>自动识别不可靠的 OCR 结果，避免污染搜索结果。</li>
+          <li><b>自定义关键参数提取</b><span class="dash"> — </span>定义如"最大工作压力""序列号"等标签，从文档文本中直接提取对应数值。</li>
+          <li><b>结构化提取结果</b><span class="dash"> — </span>每条结果自动拆分为数值、单位、说明——而不是一整段原始文本。</li>
+          <li><b>支持重复出现的关键字</b><span class="dash"> — </span>同一标签在文档中多次出现时，会分别编号、单独提取。</li>
+          <li><b>元数据 CSV 导出</b><span class="dash"> — </span>每份文件及其元数据一行，直接可在 Excel 中打开。</li>
+        </ul>
+      </section>
+
+      <section class="sheet" id="ai">
+        <div class="sheet-head">
+          <span class="sheet-num">05</span>
+          <h2 class="sheet-title disp">AI 辅助</h2>
+        </div>
+        <p class="sheet-desc">可选启用，使用自备的 API Key——专为普通搜索和正则表达式无法应对的文档而设计。</p>
+        <ul class="flist">
+          <li><b>AI 驱动的关键参数提取</b><span class="dash"> — </span>直接读取文档页面图像，提取传统文本匹配无法应对的复杂版式中的数值。</li>
+          <li><b>全项目智能问答</b><span class="dash"> — </span>用自然语言就整个项目（或单个文件夹）提问，获得带有原文引用来源的回答。</li>
+          <li><b>引导式密钥配置</b><span class="dash"> — </span>应用内提供获取并保存 Gemini API Key 的说明，密钥加密保存。</li>
+        </ul>
+      </section>
+
+      <section class="sheet" id="faces">
+        <div class="sheet-head">
+          <span class="sheet-num">06</span>
+          <h2 class="sheet-title disp">照片与人脸识别</h2>
+        </div>
+        <p class="sheet-desc">适用于照片和文书同样重要的资料库。</p>
+        <ul class="flist">
+          <li><b>标记一次人脸即可</b><span class="dash"> — </span>DMS 会自动建立"人物"目录，此后持续收录。</li>
+          <li><b>点击人物即可查看全部照片</b><span class="dash"> — </span>"人物"视图汇总此人在整个库中出现过的每一张照片。</li>
+          <li><b>自动扫描匹配</b><span class="dash"> — </span>在某个文件夹或整个库中查找某位（或所有）已标记人物的更多照片，匹配置信度可调。</li>
+          <li><b>一键安装识别引擎</b><span class="dash"> — </span>引导式安装人脸识别底层引擎，并实时显示安装进度。</li>
+          <li><b>彻底删除</b><span class="dash"> — </span>一键删除某个人物及其全部标记。</li>
+        </ul>
+      </section>
+
+      <section class="sheet" id="databook">
+        <div class="sheet-head">
+          <span class="sheet-num">07</span>
+          <h2 class="sheet-title disp">资料手册生成（Databook）</h2>
+        </div>
+        <p class="sheet-desc">一键把文件夹树变成一份可交付的装订文档。</p>
+        <ul class="flist">
+          <li><b>生成装订版 PDF 资料手册</b><span class="dash"> — </span>从文件夹树中选取任意一组文件，自动生成封面、目录与分节书签。</li>
+          <li><b>结构随文件夹树而定</b><span class="dash"> — </span>文件夹顺序、序列号与路径自动成为资料手册的章节结构。</li>
+          <li><b>可插入自定义封面</b><span class="dash"> — </span>在自动生成的封面之前插入自己的封面页。</li>
+          <li><b>自动处理纯图片章节</b><span class="dash"> — </span>只含图片的文件夹会自动转换为可打印的 PDF 页面。</li>
+        </ul>
+      </section>
+
+      <section class="sheet" id="share">
+        <div class="sheet-head">
+          <span class="sheet-num">08</span>
+          <h2 class="sheet-title disp">分享与远程访问</h2>
+        </div>
+        <p class="sheet-desc">把一份文件——或者一个上传入口——交给不在同一台电脑前的人。</p>
+        <ul class="flist">
+          <li><b>发送到手机</b><span class="dash"> — </span>生成一小时有效的下载链接，通过 iMessage/短信（Mac）或"你的手机"（Windows）发送，接收方无需安装任何应用。</li>
+          <li><b>邮件发送</b><span class="dash"> — </span>直接在应用内附件发送文件。</li>
+          <li><b>远程上传链接</b><span class="dash"> — </span>生成带二维码的公开链接，让同事或外部承包商无需账号即可从任何地方将文件直接上传到项目中。</li>
+          <li><b>内置安全隧道</b><span class="dash"> — </span>无需在本地做任何路由器或端口配置，远程链接即可使用。</li>
+          <li><b>同一局域网直接访问</b><span class="dash"> — </span>同一 Wi-Fi 下的其他设备可直接连接，完全不依赖互联网。</li>
+        </ul>
+      </section>
+
+      <section class="sheet" id="backup">
+        <div class="sheet-head">
+          <span class="sheet-num">09</span>
+          <h2 class="sheet-title disp">备份与可迁移性</h2>
+        </div>
+        <p class="sheet-desc">这里的一切都不会被"锁死"。文件始终是你的，格式也是任何软件都能打开的通用格式。</p>
+        <ul class="flist">
+          <li><b>真实文件，标准格式</b><span class="dash"> — </span>PDF、图片就是磁盘上普通文件夹里的普通文件，绝非专有格式的黑盒。</li>
+          <li><b>免费获得云同步</b><span class="dash"> — </span>把存储文件夹指向 OneDrive、Dropbox 或 iCloud，同步即自动完成。</li>
+          <li><b>自动滚动备份</b><span class="dash"> — </span>保留最近若干份备份，较旧的自动归档而不会被静默删除。</li>
+          <li><b>灵活的手动导出</b><span class="dash"> — </span>可选仅导出元数据、导出含全部文件的完整备份，或仅导出所选文件夹。</li>
+          <li><b>导入与检查</b><span class="dash"> — </span>可还原一份备份文件，也可以在真正导入前先查看其中内容。</li>
+          <li><b>内置 OneDrive 配置指南</b><span class="dash"> — </span>应用内提供分步设置说明。</li>
+        </ul>
+      </section>
+
+      <section class="sheet" id="security">
+        <div class="sheet-head">
+          <span class="sheet-num">10</span>
+          <h2 class="sheet-title disp">安全与权限</h2>
+        </div>
+        <p class="sheet-desc">既可以锁住整个资料库，也可以只保护其中敏感的部分。</p>
+        <ul class="flist">
+          <li><b>全局密码保护</b><span class="dash"> — </span>可选的应用登录口令，加盐哈希存储。</li>
+          <li><b>按文件夹加密保存凭据</b><span class="dash"> — </span>可将登录信息（网址、账号、密码）保存在特定文件夹下——例如某台设备的管理后台——只有点击"显示"时才会解密。</li>
+          <li><b>分享链接自动过期</b><span class="dash"> — </span>每条"发送到手机"链接一小时后自动失效。</li>
+          <li><b>密钥全部加密存储</b><span class="dash"> — </span>API Key、文件夹密码、邮箱凭据均不会以明文形式保存。</li>
+        </ul>
+      </section>
+
+      <section class="sheet" id="anywhere">
+        <div class="sheet-head">
+          <span class="sheet-num">11</span>
+          <h2 class="sheet-title disp">随处可用，中英双语</h2>
+        </div>
+        <p class="sheet-desc">安装简单，日常使用更简单。</p>
+        <ul class="flist">
+          <li><b>一键桌面启动器</b><span class="dash"> — </span>适用于 Mac 与 Windows，缺少的依赖会自动安装。</li>
+          <li><b>完整中英双语界面</b><span class="dash"> — </span>可随时一键切换语言。</li>
+          <li><b>内置翻译版说明文档</b><span class="dash"> — </span>设置指南与完整用户手册均可在应用内下载，中英文皆备。</li>
+          <li><b>启动自愈</b><span class="dash"> — </span>自动识别上一次异常退出遗留的进程并释放端口，而不会启动失败。</li>
+        </ul>
+      </section>
+
+      <div class="appendix-head" id="audience">
+        <div class="appendix-eyebrow disp">受众索引</div>
+        <h2 class="appendix-title disp">适合谁用</h2>
+        <p class="appendix-sub">同一套底层系统，指向完全不同的档案柜。以下是与每类用户关系最密切的功能摘选。</p>
+      </div>
+
+      <div class="aud-grid">
+        <div class="aud-card">
+          <span class="aud-stamp">工业 / 工程</span>
+          <h3>总成与设备资料手册</h3>
+          <ul>
+            <li>由 BOM 批量搭建、带序列号的总成层级结构</li>
+            <li>从扫描图纸中直接提取设计值与实测值等关键参数</li>
+            <li>一键生成装订资料手册：封面、目录、书签</li>
+            <li>按设备保存管理后台登录凭据</li>
+          </ul>
+        </div>
+        <div class="aud-card">
+          <span class="aud-stamp">设施 / 现场作业</span>
+          <h3>设备与现场记录</h3>
+          <ul>
+            <li>扫码手机采集——拍下设备照片即自动归档</li>
+            <li>按 GPS 与日期自动整理现场照片</li>
+            <li>为承包商提供无需账号的远程上传链接</li>
+            <li>车间现场同局域网访问，无需联网</li>
+          </ul>
+        </div>
+        <div class="aud-card">
+          <span class="aud-stamp">中小企业 / 行政</span>
+          <h3>记录、合同、发票</h3>
+          <ul>
+            <li>元数据 CSV 导出，方便记账</li>
+            <li>全库密码保护</li>
+            <li>发送到手机 / 邮件，快速交付给客户</li>
+            <li>借助现有 OneDrive 或 Dropbox 免费备份</li>
+          </ul>
+        </div>
+        <div class="aud-card">
+          <span class="aud-stamp">家庭 / 个人</span>
+          <h3>医疗、保险、遗嘱与日常文书</h3>
+          <ul>
+            <li>医疗记录与 HSA/FSA 报销收据 — 自动 OCR 可搜索，几个月后也能轻松找到"3 月皮肤科账单 340 美元"，年底还可导出 CSV 用于报税</li>
+            <li>保险单证 — 房屋、车辆、健康、人寿保险各建一个文件夹，保单号、保额、到期日自动提取</li>
+            <li>遗嘱与预立医疗指示 — 密码保护，以真实文件形式自动备份，关键时刻家人无需账号也能打开</li>
+            <li>升学申请与日常文书 — 按孩子分文件夹，拖放扫描成绩单和表格，手机拍照上传无需安装任何 App</li>
+            <li>人脸识别 — 按人物浏览家庭照片库，双语界面适合多语言家庭</li>
+          </ul>
+        </div>
+        <div class="aud-card">
+          <span class="aud-stamp">摄影 / 活动</span>
+          <h3>拍摄、相册、来宾照片</h3>
+          <ul>
+            <li>"人物"视图——标记一次，找到某人的全部照片</li>
+            <li>一次性 ZIP 批量导入整场拍摄</li>
+            <li>按拍摄日期与地点自动整理</li>
+            <li>将精选照片合并为一份可交付 PDF</li>
+          </ul>
+        </div>
+      </div>
+
+      <footer>
+        <span>DMS.app — 功能索引</span>
+        <span>根据当前代码库整理，供市场推广参考</span>
+      </footer>
+
+    </main>
+  </div>
+</div>
