@@ -15,7 +15,7 @@
     --focus:#2F5C86;
   }
   @media (prefers-color-scheme: dark){
-    :root{
+    :root:not([data-theme="light"]){
       --paper:#12151C;
       --paper-raised:#1A1E27;
       --ink:#ECEDEA;
@@ -188,6 +188,7 @@
     margin-bottom:22px;
     scroll-margin-top:20px;
   }
+  .sheet.is-new{border-color:var(--blue);}
   .sheet-head{
     display:flex;
     align-items:baseline;
@@ -208,6 +209,17 @@
     text-transform:uppercase;
     margin:0;
     flex:1;
+  }
+  .sheet-new-badge{
+    font-family:"SF Mono","JetBrains Mono",ui-monospace,monospace;
+    font-size:10px;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+    color:var(--paper-raised);
+    background:var(--blue);
+    padding:2px 7px;
+    flex:none;
+    align-self:center;
   }
   .sheet-desc{
     padding:12px 22px 4px;
@@ -230,6 +242,23 @@
   .flist li:first-child{border-top:none;}
   .flist b{font-weight:700;}
   .flist .dash{color:var(--ink-faint);}
+  .flist li.is-new{position:relative; padding-left:14px;}
+  .flist li.is-new::before{
+    content:"";
+    position:absolute;left:0;top:16px;
+    width:6px;height:6px;border-radius:50%;
+    background:var(--blue);
+  }
+  .new-tag{
+    font-family:"SF Mono","JetBrains Mono",ui-monospace,monospace;
+    font-size:9.5px;
+    letter-spacing:.08em;
+    color:var(--blue);
+    border:1px solid var(--blue);
+    padding:0 4px;
+    margin-left:6px;
+    vertical-align:1px;
+  }
 
   /* ---- audience appendix ---- */
   .appendix-head{
@@ -321,7 +350,7 @@
     <div class="tb-fields">
       <div class="tb-field">
         <div class="tb-field-label disp">Document</div>
-        <div class="tb-field-value mono">Feature Index</div>
+        <div class="tb-field-value mono">Feature Index — rev. 2026-08-14</div>
       </div>
       <div class="tb-field">
         <div class="tb-field-label disp">Storage Model</div>
@@ -333,7 +362,7 @@
       </div>
       <div class="tb-field">
         <div class="tb-field-label disp">Sheets</div>
-        <div class="tb-field-value mono">01–11 + Audience Index</div>
+        <div class="tb-field-value mono">01–12 + Audience Index</div>
       </div>
     </div>
   </div>
@@ -346,12 +375,13 @@
       <a href="#view"><span class="num mono">03</span> View &amp; Merge</a>
       <a href="#search"><span class="num mono">04</span> Search &amp; Extraction</a>
       <a href="#ai"><span class="num mono">05</span> AI Assist</a>
-      <a href="#faces"><span class="num mono">06</span> Photos &amp; Faces</a>
-      <a href="#databook"><span class="num mono">07</span> Databook Output</a>
-      <a href="#share"><span class="num mono">08</span> Share &amp; Remote</a>
-      <a href="#backup"><span class="num mono">09</span> Backup &amp; Portability</a>
-      <a href="#security"><span class="num mono">10</span> Security &amp; Access</a>
-      <a href="#anywhere"><span class="num mono">11</span> Runs Anywhere</a>
+      <a href="#trends"><span class="num mono">06</span> Trend Charts</a>
+      <a href="#faces"><span class="num mono">07</span> Photos &amp; Faces</a>
+      <a href="#databook"><span class="num mono">08</span> Databook Output</a>
+      <a href="#share"><span class="num mono">09</span> Share &amp; Remote</a>
+      <a href="#backup"><span class="num mono">10</span> Backup &amp; Portability</a>
+      <a href="#security"><span class="num mono">11</span> Security &amp; Access</a>
+      <a href="#anywhere"><span class="num mono">12</span> Runs Anywhere</a>
       <a href="#audience"><span class="num mono">＋</span> By Audience</a>
     </nav>
 
@@ -368,6 +398,7 @@
           <li><b>Drag to reorder or move</b><span class="dash"> — </span>the underlying files on disk move with the folder, automatically.</li>
           <li><b>Serial number field per folder</b><span class="dash"> — </span>keep consistent asset or item numbering built into the tree itself.</li>
           <li><b>Recycle bin, not permanent delete</b><span class="dash"> — </span>deleted items land in a "Not Show in Tree" bin and can be restored.</li>
+          <li class="is-new"><b>Bulk remove from a folder</b><span class="new-tag">NEW</span><span class="dash"> — </span>select several documents and clear them from a folder in one action; anything left with no other link moves to the recycle bin, nothing is deleted from disk.</li>
           <li><b>Bulk hierarchy import</b><span class="dash"> — </span>build hundreds of folders in one pass from a simple CSV-style definition file, including bill-of-materials structures where the same part name legitimately repeats under different parents.</li>
           <li><b>Preview before you commit</b><span class="dash"> — </span>check an imported hierarchy for errors before it's created.</li>
           <li><b>Real folders on disk</b><span class="dash"> — </span>the tree is mirrored as an actual folder structure, not just a database record.</li>
@@ -386,9 +417,11 @@
           <li><b>Paste from clipboard</b><span class="dash"> — </span>Cmd/Ctrl+V a screenshot directly into a folder, no save-then-upload step.</li>
           <li><b>Mobile capture via QR code</b><span class="dash"> — </span>scan a code, take a phone photo, and it lands straight in the right folder.</li>
           <li><b>Batch ZIP import</b><span class="dash"> — </span>drop in a whole ZIP archive and DMS sorts the contents into folders automatically.</li>
+          <li class="is-new"><b>Mirror an existing folder structure</b><span class="new-tag">NEW</span><span class="dash"> — </span>uploading one or more folders can now recreate their exact subfolder layout inside DMS instead of auto-sorting everything by date.</li>
           <li><b>Duplicate detection</b><span class="dash"> — </span>flags files already in the library on upload — skip, link to the existing copy, or upload anyway.</li>
           <li><b>HEIC support</b><span class="dash"> — </span>iPhone photos preview correctly without a manual conversion step.</li>
           <li><b>EXIF-aware photo filing</b><span class="dash"> — </span>reads GPS and capture date from photos, with reverse geocoding, to auto-file them by year, month, and place.</li>
+          <li class="is-new"><b>Automatic document-date detection</b><span class="new-tag">NEW</span><span class="dash"> — </span>the date on a document's own first page is read at upload time and proposed right away — ready to confirm, and ready to feed the new trend charts (Sheet 06) with nothing extra to type.</li>
         </ul>
       </section>
 
@@ -400,7 +433,10 @@
         <p class="sheet-desc">Read and consolidate documents without leaving the browser.</p>
         <ul class="flist">
           <li><b>In-browser preview</b><span class="dash"> — </span>PDFs, images, and Office files open directly, no download required.</li>
-          <li><b>Combine documents into one PDF</b><span class="dash"> — </span>merge any selected scans or files into a single PDF and file it back into a folder; originals stay safely in storage.</li>
+          <li class="is-new"><b>Full in-app PDF viewer</b><span class="new-tag">NEW</span><span class="dash"> — </span>page navigation and zoom, plus a fuzzy "find in document" search that tolerates OCR typos and jumps straight to the highlighted match on the page.</li>
+          <li class="is-new"><b>Download several documents to a folder</b><span class="new-tag">NEW</span><span class="dash"> — </span>select any set of documents and copy them out to a folder of your choice (the OS Downloads folder by default), with an option to reveal them when done.</li>
+          <li class="is-new"><b>Rename a document from its card</b><span class="new-tag">NEW</span><span class="dash"> — </span>renames the file on disk and keeps the display name in sync, no separate step.</li>
+          <li><b>Combine documents into one PDF</b><span class="dash"> — </span>merge any selected scans or files into a single PDF and file it back into a folder; originals stay safely in storage. Quick merges skip the formal cover page — per-document bookmarks alone handle navigation — and every page is normalized to portrait even when a source page is landscape.</li>
           <li><b>Open in native app</b><span class="dash"> — </span>one click hands a document off to the default OS viewer or editor.</li>
         </ul>
       </section>
@@ -435,9 +471,24 @@
         </ul>
       </section>
 
-      <section class="sheet" id="faces">
+      <section class="sheet is-new" id="trends">
         <div class="sheet-head">
           <span class="sheet-num">06</span>
+          <h2 class="sheet-title disp">Trend Charts</h2>
+          <span class="sheet-new-badge">New Sheet</span>
+        </div>
+        <p class="sheet-desc">Turn a repeated key parameter into a chart, without leaving the folder it lives in.</p>
+        <ul class="flist">
+          <li class="is-new"><b>Parameter vs. time chart</b><span class="dash"> — </span>pick a folder and a numeric key parameter (from key extraction or manual metadata) and see every value plotted against date, optionally including subfolders.</li>
+          <li class="is-new"><b>Automatic timeline</b><span class="dash"> — </span>dates come from each document's own detected or entered date, or — failing that — from the "YYYY-MM" folder it's filed under.</li>
+          <li class="is-new"><b>Click a point, open the document</b><span class="dash"> — </span>jump straight from a plotted value, or a row in the table beneath it, to the source document.</li>
+          <li class="is-new"><b>Gemini trend commentary</b><span class="dash"> — </span>opt-in AI read on the trend's direction, approximate rate of change, and any outliers worth a second look.</li>
+        </ul>
+      </section>
+
+      <section class="sheet" id="faces">
+        <div class="sheet-head">
+          <span class="sheet-num">07</span>
           <h2 class="sheet-title disp">Photos &amp; Face Recognition</h2>
         </div>
         <p class="sheet-desc">For libraries where the photos are as important as the paperwork.</p>
@@ -452,7 +503,7 @@
 
       <section class="sheet" id="databook">
         <div class="sheet-head">
-          <span class="sheet-num">07</span>
+          <span class="sheet-num">08</span>
           <h2 class="sheet-title disp">Databook Output</h2>
         </div>
         <p class="sheet-desc">Turn a folder tree into a bound handoff package, in one click.</p>
@@ -461,12 +512,14 @@
           <li><b>Structure follows your tree</b><span class="dash"> — </span>folder order, serial numbers, and paths become the databook's section structure.</li>
           <li><b>Custom front page</b><span class="dash"> — </span>insert your own cover ahead of the auto-generated one.</li>
           <li><b>Photo sections handled automatically</b><span class="dash"> — </span>image-only folders convert into print-ready PDF pages.</li>
+          <li class="is-new"><b>Automatic portrait normalization</b><span class="new-tag">NEW</span><span class="dash"> — </span>a landscape source page is rotated to display upright, so a merged databook holds one consistent orientation throughout.</li>
+          <li class="is-new"><b>Compact photo-heavy output</b><span class="new-tag">NEW</span><span class="dash"> — </span>images are intelligently re-compressed before embedding, cutting the file size of a photo-heavy databook by two orders of magnitude with no visible loss on the page.</li>
         </ul>
       </section>
 
       <section class="sheet" id="share">
         <div class="sheet-head">
-          <span class="sheet-num">08</span>
+          <span class="sheet-num">09</span>
           <h2 class="sheet-title disp">Share &amp; Remote Access</h2>
         </div>
         <p class="sheet-desc">Get a document — or a whole upload point — to someone who isn't in front of the same computer.</p>
@@ -481,7 +534,7 @@
 
       <section class="sheet" id="backup">
         <div class="sheet-head">
-          <span class="sheet-num">09</span>
+          <span class="sheet-num">10</span>
           <h2 class="sheet-title disp">Backup &amp; Portability</h2>
         </div>
         <p class="sheet-desc">Nothing here is locked in. The files are yours, in formats anything can open.</p>
@@ -490,6 +543,7 @@
           <li><b>Cloud sync for free</b><span class="dash"> — </span>point the storage folder at OneDrive, Dropbox, or iCloud and syncing just happens.</li>
           <li><b>Automatic rolling backups</b><span class="dash"> — </span>the most recent backups are kept, older ones auto-archived rather than silently deleted.</li>
           <li><b>Flexible manual export</b><span class="dash"> — </span>metadata only, a complete backup with every file, or just selected folders.</li>
+          <li class="is-new"><b>Encrypted exports for protected projects</b><span class="new-tag">NEW</span><span class="dash"> — </span>a project with its own password (see Security, Sheet 11) has every .dms export automatically encrypted with it — no separate export password to set.</li>
           <li><b>Import and inspect</b><span class="dash"> — </span>restore a backup file, or check what's inside one before committing to the import.</li>
           <li><b>Guided OneDrive setup</b><span class="dash"> — </span>step-by-step instructions built into the app.</li>
         </ul>
@@ -497,21 +551,23 @@
 
       <section class="sheet" id="security">
         <div class="sheet-head">
-          <span class="sheet-num">10</span>
+          <span class="sheet-num">11</span>
           <h2 class="sheet-title disp">Security &amp; Access</h2>
         </div>
         <p class="sheet-desc">Lock down the whole library, or just the sensitive parts of it.</p>
         <ul class="flist">
-          <li><b>Library-wide password</b><span class="dash"> — </span>optional login screen protecting the entire application, salted and hashed.</li>
+          <li><b>Library-wide password</b><span class="dash"> — </span>optional login screen protecting the entire application, on this machine, regardless of which project is open — salted and hashed.</li>
+          <li class="is-new"><b>Per-project password</b><span class="new-tag">NEW</span><span class="dash"> — </span>a second, independent password that belongs to one specific project — stored inside its own folder, so it travels along on a copy, a sync, or a handoff. Required to open that project directly, or to import its exported .dms file anywhere else.</li>
+          <li class="is-new"><b>Named projects</b><span class="new-tag">NEW</span><span class="dash"> — </span>give a password-protected project a friendly name, shown on its lock screen and in the file picker.</li>
           <li><b>Per-folder credential storage</b><span class="dash"> — </span>save a login (URL, account, password) against a specific folder — e.g. an equipment portal — decrypted only when you click reveal.</li>
           <li><b>Self-expiring share links</b><span class="dash"> — </span>every "Send to Phone" link stops working after one hour.</li>
-          <li><b>Secrets encrypted at rest</b><span class="dash"> — </span>API keys, folder passwords, and email credentials are never stored in plain text.</li>
+          <li><b>Secrets encrypted at rest</b><span class="dash"> — </span>API keys, folder passwords, project passwords, and email credentials are never stored in plain text.</li>
         </ul>
       </section>
 
       <section class="sheet" id="anywhere">
         <div class="sheet-head">
-          <span class="sheet-num">11</span>
+          <span class="sheet-num">12</span>
           <h2 class="sheet-title disp">Runs Anywhere, Speaks Two Languages</h2>
         </div>
         <p class="sheet-desc">Low-friction install, low-friction daily use.</p>
@@ -536,7 +592,8 @@
           <ul>
             <li>Serial-numbered assembly hierarchy, built in bulk from a BOM</li>
             <li>Design-vs-actual key parameters, pulled straight out of scanned drawings</li>
-            <li>One-click bound databook: cover, TOC, bookmarks</li>
+            <li>Parameter trend charts across a serial-numbered fleet, with an AI read on drift</li>
+            <li>One-click bound databook: cover, TOC, bookmarks — compact even with hundreds of photos</li>
             <li>Per-asset credential storage for equipment portals</li>
           </ul>
         </div>
@@ -546,6 +603,7 @@
           <ul>
             <li>QR mobile capture — photo an asset, it files itself</li>
             <li>GPS + date auto-organizing for site photos</li>
+            <li>Mirror an existing site archive's folder structure on import</li>
             <li>Remote Upload link for contractors, no account needed</li>
             <li>Same-network access on the shop floor, no internet required</li>
           </ul>
@@ -555,9 +613,9 @@
           <h3>Records, contracts, invoices</h3>
           <ul>
             <li>CSV metadata export for bookkeeping</li>
-            <li>Library-wide password protection</li>
+            <li>Library-wide password, plus a separate password on a sensitive client project</li>
             <li>Send to Phone / email for quick client handoffs</li>
-            <li>Free backup via existing OneDrive or Dropbox</li>
+            <li>Free backup via existing OneDrive or Dropbox, encrypted if the project is protected</li>
           </ul>
         </div>
         <div class="aud-card">
@@ -566,7 +624,7 @@
           <ul>
             <li>Medical records &amp; HSA/FSA receipts — OCR'd and searchable, so a $340 dermatology bill from March is easy to find again at reimbursement time; export a year's receipts to CSV for taxes</li>
             <li>Insurance policies — home, auto, health, life — one per folder, with policy number, coverage, and expiration pulled out automatically</li>
-            <li>Wills &amp; living wills — password-protected, backed up as real files your family can open without an account when it matters most</li>
+            <li>Wills &amp; living wills — a project password of their own, backed up as real files (encrypted) your family can open without an account when it matters most</li>
             <li>College applications &amp; everyday paperwork — one folder per child, drag-and-drop scans, phone-camera upload with no app to install</li>
             <li>Face recognition — browse the family photo library by person, in a bilingual interface for multi-language households</li>
           </ul>
@@ -577,6 +635,7 @@
           <ul>
             <li>People view — tag once, find every photo of someone</li>
             <li>Batch ZIP import of a full shoot in one drop</li>
+            <li>Mirror an existing shoot's folder structure instead of re-sorting it by date</li>
             <li>Auto-organizing by capture date and location</li>
             <li>Combine selected shots into a single deliverable PDF</li>
           </ul>
@@ -585,7 +644,7 @@
 
       <footer>
         <span>DMS.app — Feature Index</span>
-        <span>Compiled from the current codebase for marketing reference</span>
+        <span>Compiled from the current codebase for marketing reference · rev. 2026-08-14</span>
       </footer>
 
     </main>
