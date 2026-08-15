@@ -15,7 +15,7 @@
     --focus:#2F5C86;
   }
   @media (prefers-color-scheme: dark){
-    :root{
+    :root:not([data-theme="light"]){
       --paper:#12151C;
       --paper-raised:#1A1E27;
       --ink:#ECEDEA;
@@ -184,6 +184,7 @@
     margin-bottom:22px;
     scroll-margin-top:20px;
   }
+  .sheet.is-new{border-color:var(--blue);}
   .sheet-head{
     display:flex;
     align-items:baseline;
@@ -203,6 +204,16 @@
     font-size:19px;
     margin:0;
     flex:1;
+  }
+  .sheet-new-badge{
+    font-family:"SF Mono","JetBrains Mono",ui-monospace,monospace;
+    font-size:10px;
+    letter-spacing:.08em;
+    color:var(--paper-raised);
+    background:var(--blue);
+    padding:2px 7px;
+    flex:none;
+    align-self:center;
   }
   .sheet-desc{
     padding:12px 22px 4px;
@@ -225,6 +236,23 @@
   .flist li:first-child{border-top:none;}
   .flist b{font-weight:700;}
   .flist .dash{color:var(--ink-faint);}
+  .flist li.is-new{position:relative; padding-left:14px;}
+  .flist li.is-new::before{
+    content:"";
+    position:absolute;left:0;top:18px;
+    width:6px;height:6px;border-radius:50%;
+    background:var(--blue);
+  }
+  .new-tag{
+    font-family:"SF Mono","JetBrains Mono",ui-monospace,monospace;
+    font-size:9.5px;
+    letter-spacing:.04em;
+    color:var(--blue);
+    border:1px solid var(--blue);
+    padding:0 4px;
+    margin-left:6px;
+    vertical-align:1px;
+  }
 
   /* ---- audience appendix ---- */
   .appendix-head{
@@ -316,7 +344,7 @@
     <div class="tb-fields">
       <div class="tb-field">
         <div class="tb-field-label disp">文档</div>
-        <div class="tb-field-value mono">功能索引</div>
+        <div class="tb-field-value mono">功能索引 · 2026-08-14 更新</div>
       </div>
       <div class="tb-field">
         <div class="tb-field-label disp">存储方式</div>
@@ -328,7 +356,7 @@
       </div>
       <div class="tb-field">
         <div class="tb-field-label disp">分页</div>
-        <div class="tb-field-value mono">01–11 + 受众索引</div>
+        <div class="tb-field-value mono">01–12 + 受众索引</div>
       </div>
     </div>
   </div>
@@ -341,12 +369,13 @@
       <a href="#view"><span class="num mono">03</span> 查看与合并</a>
       <a href="#search"><span class="num mono">04</span> 搜索与数据提取</a>
       <a href="#ai"><span class="num mono">05</span> AI 辅助</a>
-      <a href="#faces"><span class="num mono">06</span> 照片与人脸</a>
-      <a href="#databook"><span class="num mono">07</span> 资料手册生成</a>
-      <a href="#share"><span class="num mono">08</span> 分享与远程访问</a>
-      <a href="#backup"><span class="num mono">09</span> 备份与可迁移性</a>
-      <a href="#security"><span class="num mono">10</span> 安全与权限</a>
-      <a href="#anywhere"><span class="num mono">11</span> 随处可用</a>
+      <a href="#trends"><span class="num mono">06</span> 趋势图表</a>
+      <a href="#faces"><span class="num mono">07</span> 照片与人脸</a>
+      <a href="#databook"><span class="num mono">08</span> 资料手册生成</a>
+      <a href="#share"><span class="num mono">09</span> 分享与远程访问</a>
+      <a href="#backup"><span class="num mono">10</span> 备份与可迁移性</a>
+      <a href="#security"><span class="num mono">11</span> 安全与权限</a>
+      <a href="#anywhere"><span class="num mono">12</span> 随处可用</a>
       <a href="#audience"><span class="num mono">＋</span> 按受众分类</a>
     </nav>
 
@@ -363,6 +392,7 @@
           <li><b>拖拽排序或移动</b><span class="dash"> — </span>移动文件夹时，磁盘上对应的真实文件会自动一起移动。</li>
           <li><b>每个文件夹可设序列号</b><span class="dash"> — </span>在文件夹树内直接维护统一的资产/物料编号。</li>
           <li><b>回收站，而非彻底删除</b><span class="dash"> — </span>删除的内容会进入"不在树中显示"回收站，可随时恢复。</li>
+          <li class="is-new"><b>批量从文件夹移除</b><span class="new-tag">新增</span><span class="dash"> — </span>一次选中多份文档并从当前文件夹清除；无其他链接的会移入回收站，磁盘上的文件不会丢失。</li>
           <li><b>批量导入层级结构</b><span class="dash"> — </span>通过简单的 CSV 格式定义文件，一次性建立成百上千个文件夹，也支持物料清单（BOM）中同一部件名合法地出现在不同上级下的情况。</li>
           <li><b>导入前预览</b><span class="dash"> — </span>在真正创建之前，先检查导入的层级结构是否有误。</li>
           <li><b>磁盘上的真实文件夹</b><span class="dash"> — </span>文件夹树会同步映射为磁盘上真实存在的文件夹，而不仅是数据库记录。</li>
@@ -381,9 +411,11 @@
           <li><b>剪贴板粘贴</b><span class="dash"> — </span>Cmd/Ctrl+V 直接把截图粘贴进文件夹，无需先保存再上传。</li>
           <li><b>手机扫码采集</b><span class="dash"> — </span>扫描二维码，用手机拍照，照片直接进入对应文件夹。</li>
           <li><b>ZIP 批量导入</b><span class="dash"> — </span>拖入一整个 ZIP 压缩包，DMS 自动把内容分类归档。</li>
+          <li class="is-new"><b>按来源文件夹结构上传</b><span class="new-tag">新增</span><span class="dash"> — </span>上传一个或多个文件夹时，现在可以原样保留其子文件夹结构，而不是一律按日期自动归类。</li>
           <li><b>重复文件检测</b><span class="dash"> — </span>上传时自动识别库中已存在的文件——可选择跳过、关联到已有文件，或仍然上传。</li>
           <li><b>支持 HEIC 格式</b><span class="dash"> — </span>iPhone 拍摄的照片无需手动转换即可正常预览。</li>
           <li><b>识别照片 EXIF 信息</b><span class="dash"> — </span>读取照片的 GPS 位置与拍摄日期，并进行逆地理编码，自动按年、月、地点归档。</li>
+          <li class="is-new"><b>自动识别文档日期</b><span class="new-tag">新增</span><span class="dash"> — </span>上传时读取文档首页上的日期并立即提出建议——随手确认即可，也直接为新增的"趋势图表"（第 06 页）提供数据，无需额外录入。</li>
         </ul>
       </section>
 
@@ -395,7 +427,10 @@
         <p class="sheet-desc">无需离开浏览器即可阅读与整合文件。</p>
         <ul class="flist">
           <li><b>浏览器内直接预览</b><span class="dash"> — </span>PDF、图片、Office 文件均可直接打开，无需下载。</li>
-          <li><b>合并为单个 PDF</b><span class="dash"> — </span>将选中的多份扫描件或文件合并为一个 PDF，并归档到指定文件夹；原始文件仍安全保留在存储中。</li>
+          <li class="is-new"><b>完整的应用内 PDF 阅读器</b><span class="new-tag">新增</span><span class="dash"> — </span>支持翻页与缩放，并提供可容忍 OCR 错字的模糊"文档内查找"，直接跳转并高亮命中的页面位置。</li>
+          <li class="is-new"><b>多份文档下载到指定文件夹</b><span class="new-tag">新增</span><span class="dash"> — </span>选中任意一组文档，复制到你指定的文件夹（默认是系统"下载"文件夹），完成后可选择直接打开该文件夹查看。</li>
+          <li class="is-new"><b>在卡片上直接重命名文档</b><span class="new-tag">新增</span><span class="dash"> — </span>同步重命名磁盘上的文件与显示名称，无需额外步骤。</li>
+          <li><b>合并为单个 PDF</b><span class="dash"> — </span>将选中的多份扫描件或文件合并为一个 PDF，并归档到指定文件夹；原始文件仍安全保留在存储中。快速合并会跳过正式封面页——仅靠逐文档书签即可导航——并自动将每一页统一转为竖版，即便原始页面是横版。</li>
           <li><b>一键用原生应用打开</b><span class="dash"> — </span>交给系统默认的查看器或编辑器处理。</li>
         </ul>
       </section>
@@ -430,9 +465,24 @@
         </ul>
       </section>
 
-      <section class="sheet" id="faces">
+      <section class="sheet is-new" id="trends">
         <div class="sheet-head">
           <span class="sheet-num">06</span>
+          <h2 class="sheet-title disp">趋势图表</h2>
+          <span class="sheet-new-badge">新增分页</span>
+        </div>
+        <p class="sheet-desc">不离开文件夹，直接把一个重复出现的关键参数变成一张图表。</p>
+        <ul class="flist">
+          <li class="is-new"><b>参数-时间趋势图</b><span class="dash"> — </span>选定一个文件夹和一个数值型关键参数（来自关键字提取或手动元数据），把每一份文档的数值按日期绘制成图，可选择是否包含子文件夹。</li>
+          <li class="is-new"><b>自动生成时间轴</b><span class="dash"> — </span>时间取自每份文档自身识别或录入的日期；若文档没有日期，则退而使用其所在的"YYYY-MM"文件夹名。</li>
+          <li class="is-new"><b>点击图上的点即可打开文档</b><span class="dash"> — </span>无论是图上的点还是下方表格中的一行，都可以直接跳转到对应的源文档。</li>
+          <li class="is-new"><b>Gemini 趋势点评</b><span class="dash"> — </span>可选启用 AI，对趋势方向、大致变化速率及任何值得关注的异常值给出简明点评。</li>
+        </ul>
+      </section>
+
+      <section class="sheet" id="faces">
+        <div class="sheet-head">
+          <span class="sheet-num">07</span>
           <h2 class="sheet-title disp">照片与人脸识别</h2>
         </div>
         <p class="sheet-desc">适用于照片和文书同样重要的资料库。</p>
@@ -447,7 +497,7 @@
 
       <section class="sheet" id="databook">
         <div class="sheet-head">
-          <span class="sheet-num">07</span>
+          <span class="sheet-num">08</span>
           <h2 class="sheet-title disp">资料手册生成（Databook）</h2>
         </div>
         <p class="sheet-desc">一键把文件夹树变成一份可交付的装订文档。</p>
@@ -456,12 +506,14 @@
           <li><b>结构随文件夹树而定</b><span class="dash"> — </span>文件夹顺序、序列号与路径自动成为资料手册的章节结构。</li>
           <li><b>可插入自定义封面</b><span class="dash"> — </span>在自动生成的封面之前插入自己的封面页。</li>
           <li><b>自动处理纯图片章节</b><span class="dash"> — </span>只含图片的文件夹会自动转换为可打印的 PDF 页面。</li>
+          <li class="is-new"><b>自动转正竖版</b><span class="new-tag">新增</span><span class="dash"> — </span>横版原始页面会自动旋转为竖版显示，使合并后的资料手册全程保持统一的页面方向。</li>
+          <li class="is-new"><b>大幅压缩含大量照片的输出文件</b><span class="new-tag">新增</span><span class="dash"> — </span>照片在嵌入前会智能重新压缩，在页面上观感几乎无损的前提下，把大量照片组成的资料手册体积压缩到原来的百分之一左右。</li>
         </ul>
       </section>
 
       <section class="sheet" id="share">
         <div class="sheet-head">
-          <span class="sheet-num">08</span>
+          <span class="sheet-num">09</span>
           <h2 class="sheet-title disp">分享与远程访问</h2>
         </div>
         <p class="sheet-desc">把一份文件——或者一个上传入口——交给不在同一台电脑前的人。</p>
@@ -476,7 +528,7 @@
 
       <section class="sheet" id="backup">
         <div class="sheet-head">
-          <span class="sheet-num">09</span>
+          <span class="sheet-num">10</span>
           <h2 class="sheet-title disp">备份与可迁移性</h2>
         </div>
         <p class="sheet-desc">这里的一切都不会被"锁死"。文件始终是你的，格式也是任何软件都能打开的通用格式。</p>
@@ -485,6 +537,7 @@
           <li><b>免费获得云同步</b><span class="dash"> — </span>把存储文件夹指向 OneDrive、Dropbox 或 iCloud，同步即自动完成。</li>
           <li><b>自动滚动备份</b><span class="dash"> — </span>保留最近若干份备份，较旧的自动归档而不会被静默删除。</li>
           <li><b>灵活的手动导出</b><span class="dash"> — </span>可选仅导出元数据、导出含全部文件的完整备份，或仅导出所选文件夹。</li>
+          <li class="is-new"><b>受保护项目自动加密导出</b><span class="new-tag">新增</span><span class="dash"> — </span>设置了项目密码的项目（见第 11 页"安全与权限"）导出的每个 .dms 文件都会自动用该密码加密，无需再单独设置导出密码。</li>
           <li><b>导入与检查</b><span class="dash"> — </span>可还原一份备份文件，也可以在真正导入前先查看其中内容。</li>
           <li><b>内置 OneDrive 配置指南</b><span class="dash"> — </span>应用内提供分步设置说明。</li>
         </ul>
@@ -492,21 +545,23 @@
 
       <section class="sheet" id="security">
         <div class="sheet-head">
-          <span class="sheet-num">10</span>
+          <span class="sheet-num">11</span>
           <h2 class="sheet-title disp">安全与权限</h2>
         </div>
         <p class="sheet-desc">既可以锁住整个资料库，也可以只保护其中敏感的部分。</p>
         <ul class="flist">
-          <li><b>全局密码保护</b><span class="dash"> — </span>可选的应用登录口令，加盐哈希存储。</li>
+          <li><b>全局密码保护</b><span class="dash"> — </span>可选的应用登录口令，保护本机上的整个应用，与当前打开哪个项目无关——加盐哈希存储。</li>
+          <li class="is-new"><b>项目密码</b><span class="new-tag">新增</span><span class="dash"> — </span>一个独立于上面全局密码的第二重密码，只属于某一个具体项目——存储在项目文件夹内部，随文件夹一起复制、同步或交接。直接打开该项目，或在别处导入其导出的 .dms 文件，都需要这个密码。</li>
+          <li class="is-new"><b>项目命名</b><span class="new-tag">新增</span><span class="dash"> — </span>为设有密码的项目起一个易识别的名称，会显示在其锁定界面和文件选择器中。</li>
           <li><b>按文件夹加密保存凭据</b><span class="dash"> — </span>可将登录信息（网址、账号、密码）保存在特定文件夹下——例如某台设备的管理后台——只有点击"显示"时才会解密。</li>
           <li><b>分享链接自动过期</b><span class="dash"> — </span>每条"发送到手机"链接一小时后自动失效。</li>
-          <li><b>密钥全部加密存储</b><span class="dash"> — </span>API Key、文件夹密码、邮箱凭据均不会以明文形式保存。</li>
+          <li><b>密钥全部加密存储</b><span class="dash"> — </span>API Key、文件夹密码、项目密码与邮箱凭据均不会以明文形式保存。</li>
         </ul>
       </section>
 
       <section class="sheet" id="anywhere">
         <div class="sheet-head">
-          <span class="sheet-num">11</span>
+          <span class="sheet-num">12</span>
           <h2 class="sheet-title disp">随处可用，中英双语</h2>
         </div>
         <p class="sheet-desc">安装简单，日常使用更简单。</p>
@@ -531,7 +586,8 @@
           <ul>
             <li>由 BOM 批量搭建、带序列号的总成层级结构</li>
             <li>从扫描图纸中直接提取设计值与实测值等关键参数</li>
-            <li>一键生成装订资料手册：封面、目录、书签</li>
+            <li>跨序列号设备的参数趋势图表，附带 AI 对偏移趋势的点评</li>
+            <li>一键生成装订资料手册：封面、目录、书签——即便含上百张照片体积也很紧凑</li>
             <li>按设备保存管理后台登录凭据</li>
           </ul>
         </div>
@@ -541,6 +597,7 @@
           <ul>
             <li>扫码手机采集——拍下设备照片即自动归档</li>
             <li>按 GPS 与日期自动整理现场照片</li>
+            <li>导入时按原有现场档案的文件夹结构原样保留</li>
             <li>为承包商提供无需账号的远程上传链接</li>
             <li>车间现场同局域网访问，无需联网</li>
           </ul>
@@ -550,9 +607,9 @@
           <h3>记录、合同、发票</h3>
           <ul>
             <li>元数据 CSV 导出，方便记账</li>
-            <li>全库密码保护</li>
+            <li>全库密码之外，还可为敏感客户项目单独设密码</li>
             <li>发送到手机 / 邮件，快速交付给客户</li>
-            <li>借助现有 OneDrive 或 Dropbox 免费备份</li>
+            <li>借助现有 OneDrive 或 Dropbox 免费备份，项目受保护时自动加密</li>
           </ul>
         </div>
         <div class="aud-card">
@@ -561,7 +618,7 @@
           <ul>
             <li>医疗记录与 HSA/FSA 报销收据 — 自动 OCR 可搜索，几个月后也能轻松找到"3 月皮肤科账单 340 美元"，年底还可导出 CSV 用于报税</li>
             <li>保险单证 — 房屋、车辆、健康、人寿保险各建一个文件夹，保单号、保额、到期日自动提取</li>
-            <li>遗嘱与预立医疗指示 — 密码保护，以真实文件形式自动备份，关键时刻家人无需账号也能打开</li>
+            <li>遗嘱与预立医疗指示 — 单独设置项目密码，以加密的真实文件形式自动备份，关键时刻家人无需账号也能打开</li>
             <li>升学申请与日常文书 — 按孩子分文件夹，拖放扫描成绩单和表格，手机拍照上传无需安装任何 App</li>
             <li>人脸识别 — 按人物浏览家庭照片库，双语界面适合多语言家庭</li>
           </ul>
@@ -572,6 +629,7 @@
           <ul>
             <li>"人物"视图——标记一次，找到某人的全部照片</li>
             <li>一次性 ZIP 批量导入整场拍摄</li>
+            <li>保留原有拍摄文件夹结构，而不是一律按日期重新归类</li>
             <li>按拍摄日期与地点自动整理</li>
             <li>将精选照片合并为一份可交付 PDF</li>
           </ul>
@@ -580,7 +638,7 @@
 
       <footer>
         <span>DMS.app — 功能索引</span>
-        <span>根据当前代码库整理，供市场推广参考</span>
+        <span>根据当前代码库整理，供市场推广参考 · 2026-08-14 更新</span>
       </footer>
 
     </main>
