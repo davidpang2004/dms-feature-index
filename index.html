@@ -390,7 +390,7 @@
     <div class="tb-fields">
       <div class="tb-field">
         <div class="tb-field-label disp">文档</div>
-        <div class="tb-field-value mono">功能索引 · 2026-08-29 更新</div>
+        <div class="tb-field-value mono">功能索引 · 2026-09-12 更新</div>
       </div>
       <div class="tb-field">
         <div class="tb-field-label disp">存储方式</div>
@@ -462,8 +462,9 @@
           <li><b>支持 HEIC 格式</b><span class="dash"> — </span>iPhone 拍摄的照片无需手动转换即可正常预览。</li>
           <li><b>识别照片 EXIF 信息</b><span class="dash"> — </span>读取照片的 GPS 位置与拍摄日期，并进行逆地理编码，自动按年、月、地点归档。</li>
           <li><b>自动识别文档日期</b><span class="dash"> — </span>上传时读取文档首页上的日期并立即提出建议——随手确认即可，也直接为"趋势图表"（第 06 页）提供数据，无需额外录入。</li>
-          <li class="is-new"><b>语音输入描述</b><span class="new-tag">新增</span><span class="dash"> — </span>录入照片或文档说明时可直接语音输入，识别结果自动转文字追加到描述中，支持带口音的普通话。</li>
-          <li class="is-new"><b>上传上限提升至 4GB</b><span class="new-tag">新增</span><span class="dash"> — </span>原 1GB 限制在批量导入上万份文件时容易卡顿或失败，现已提升为 4GB，大批量导入导出更稳定。</li>
+          <li><b>语音输入描述</b><span class="dash"> — </span>录入照片或文档说明时可直接语音输入，识别结果自动转文字追加到描述中，支持带口音的普通话。</li>
+          <li><b>上传上限提升至 4GB</b><span class="dash"> — </span>原 1GB 限制在批量导入上万份文件时容易卡顿或失败，现已提升为 4GB，大批量导入导出更稳定。</li>
+          <li class="is-new"><b>视频同样按年/月自动归档</b><span class="new-tag">新增</span><span class="dash"> — </span>MP4、MOV 等格式直接读取视频内嵌的实际拍摄时间；其他视频格式退而使用文件的修改日期，与照片共用同一套年月归档规则。</li>
         </ul>
       </section>
 
@@ -478,10 +479,15 @@
           <li><b>完整的应用内 PDF 阅读器</b><span class="dash"> — </span>支持翻页与缩放，并提供可容忍 OCR 错字的模糊"文档内查找"，直接跳转并高亮命中的页面位置。</li>
           <li><b>多份文档下载到指定文件夹</b><span class="dash"> — </span>选中任意一组文档，复制到你指定的文件夹（默认是系统"下载"文件夹），完成后可选择直接打开该文件夹查看。</li>
           <li><b>在卡片上直接重命名文档</b><span class="dash"> — </span>同步重命名磁盘上的文件与显示名称，无需额外步骤。</li>
-          <li><b>合并为单个 PDF</b><span class="dash"> — </span>将选中的多份扫描件或文件合并为一个 PDF，并归档到指定文件夹；原始文件仍安全保留在存储中。快速合并会跳过正式封面页——仅靠逐文档书签即可导航——并自动将每一页统一转为竖版，即便原始页面是横版。</li>
+          <li><b>合并为单个 PDF</b><span class="dash"> — </span>将选中的多份扫描件或照片合并为一个 PDF，并归档到指定文件夹；含照片时会自动压缩（长边 900 像素、JPEG 85% 品质），肉眼几乎无损但体积可缩小近百倍——136 张照片的合同书可以从 2.3GB 降到约 18MB。合并后的原始文档会移入回收文件夹（如需保留原文档，改用第 08 页"资料手册"）；快速合并跳过正式封面页，仅靠逐文档书签导航，并自动将每一页统一转为竖版。</li>
           <li><b>一键用原生应用打开</b><span class="dash"> — </span>交给系统默认的查看器或编辑器处理。</li>
-          <li class="is-new"><b>拖拽即可关联已有文档</b><span class="new-tag">新增</span><span class="dash"> — </span>在"链接现有文档"窗口中，把搜索或浏览到的文档直接拖到目标文件夹上即可完成关联，无需逐一点击确认。</li>
-          <li class="is-new"><b>当前文档持续高亮</b><span class="new-tag">新增</span><span class="dash"> — </span>打开一份文档后（无论用内置阅读器还是原生应用），它在所属文件夹列表中会保持高亮，方便随时定位。</li>
+          <li><b>拖拽即可关联已有文档</b><span class="dash"> — </span>在"链接现有文档"窗口中，把搜索或浏览到的文档直接拖到目标文件夹上即可完成关联，无需逐一点击确认。</li>
+          <li><b>当前文档持续高亮</b><span class="dash"> — </span>打开一份文档后（无论用内置阅读器还是原生应用），它在所属文件夹列表中会保持高亮，方便随时定位。</li>
+          <li class="is-new"><b>列表 / 图标视图，缩略图可大可小</b><span class="new-tag">新增</span><span class="dash"> — </span>在详细列表和缩略图网格之间切换，图标视图下还能进一步切换"小图标"和"大图标"，选择会被记住。</li>
+          <li class="is-new"><b>上一份 / 下一份浏览</b><span class="new-tag">新增</span><span class="dash"> — </span>预览窗口内点击箭头或直接按键盘左右方向键，即可在当前文件夹的文档间切换，无需关闭预览重新点选。</li>
+          <li class="is-new"><b>按到期日/修改日期等多维排序</b><span class="new-tag">新增</span><span class="dash"> — </span>文档列表可按名称、文档日期、到期日或修改日期排列，不再局限于文件名一种顺序。</li>
+          <li class="is-new"><b>批量重命名</b><span class="new-tag">新增</span><span class="dash"> — </span>一键把当前文件夹里每份文档改名为"日期+地点前 10 个字符+原文件名"，日期与地点取自各自的元数据，磁盘上的实际文件名同步更新。</li>
+          <li class="is-new"><b>到期日与"日程"颜色预警</b><span class="new-tag">新增</span><span class="dash"> — </span>给任意文档设置到期日后，开启"日程"模式即可让文档与所在文件夹按紧急程度自动变色（1 天内标红、1 周内标黄、2 周内标蓝），并弹出一份按紧急程度排序的"临近到期文档"清单。</li>
         </ul>
       </section>
 
@@ -499,8 +505,8 @@
           <li><b>结构化提取结果</b><span class="dash"> — </span>每条结果自动拆分为数值、单位、说明——而不是一整段原始文本。</li>
           <li><b>支持重复出现的关键字</b><span class="dash"> — </span>同一标签在文档中多次出现时，会分别编号、单独提取。</li>
           <li><b>元数据 CSV 导出</b><span class="dash"> — </span>每份文件及其元数据一行，直接可在 Excel 中打开。</li>
-          <li class="is-new"><b>设计值 / 实测值双数据结构</b><span class="new-tag">新增</span><span class="dash"> — </span>每个关键参数可同时保存"设计值"与"实测值"，各自包含数值、单位与说明，便于合规核对与偏差分析。</li>
-          <li class="is-new"><b>交互式预览浮窗</b><span class="new-tag">新增</span><span class="dash"> — </span>人工录入或核对参数时，可弹出一个可拖拽、可缩放的原文档预览窗口，边看原文边填写，无需来回切换页面。</li>
+          <li><b>设计值 / 实测值双数据结构</b><span class="dash"> — </span>每个关键参数可同时保存"设计值"与"实测值"，各自包含数值、单位与说明，便于合规核对与偏差分析。</li>
+          <li><b>交互式预览浮窗</b><span class="dash"> — </span>人工录入或核对参数时，可弹出一个可拖拽、可缩放的原文档预览窗口，边看原文边填写，无需来回切换页面。</li>
         </ul>
       </section>
 
@@ -514,8 +520,9 @@
           <li><b>AI 驱动的关键参数提取</b><span class="dash"> — </span>直接读取文档页面图像，提取传统文本匹配无法应对的复杂版式中的数值。</li>
           <li><b>全项目智能问答</b><span class="dash"> — </span>用自然语言就整个项目（或单个文件夹）提问，获得带有原文引用来源的回答。</li>
           <li><b>引导式密钥配置</b><span class="dash"> — </span>应用内提供获取并保存 Gemini API Key 的说明，密钥加密保存。</li>
-          <li class="is-new"><b>接入 DeepSeek 大模型</b><span class="new-tag">新增</span><span class="dash"> — </span>除 Gemini 外，现可自由选择 DeepSeek 作为问答引擎，响应更快，更适合国内网络环境。</li>
-          <li class="is-new"><b>问答记录自动整理为 PDF</b><span class="new-tag">新增</span><span class="dash"> — </span>每次向 AI 提问，问题与回答都会自动追加进一份随文档保存的 PDF 记录，随时可查、可搜索。</li>
+          <li><b>接入 DeepSeek 大模型</b><span class="dash"> — </span>除 Gemini 外，现可自由选择 DeepSeek 作为问答引擎，响应更快，更适合国内网络环境。</li>
+          <li><b>问答记录自动整理为 PDF</b><span class="dash"> — </span>每次向 AI 提问，问题与回答都会自动追加进一份随文档保存的 PDF 记录，随时可查、可搜索。</li>
+          <li class="is-new"><b>打包为 PDF，交给任意 AI 平台创作</b><span class="new-tag">新增</span><span class="dash"> — </span>选中一批照片，写下（或口述+AI 润色）要求与故事，一键把照片和文字合并压缩成一份 PDF——拿去交给 ChatGPT、Gemini 等任何支持读图的 AI 平台，就能生成短视频、文章等 DMS 本身不提供的创作，且体积小、上传顺畅。</li>
         </ul>
       </section>
 
@@ -530,10 +537,10 @@
           <li><b>自动生成时间轴</b><span class="dash"> — </span>时间取自每份文档自身识别或录入的日期；若文档没有日期，则退而使用其所在的"YYYY-MM"文件夹名。</li>
           <li><b>点击图上的点即可打开文档</b><span class="dash"> — </span>无论是图上的点还是下方表格中的一行，都可以直接跳转到对应的源文档。</li>
           <li><b>Gemini 趋势点评</b><span class="dash"> — </span>可选启用 AI，对趋势方向、大致变化速率及任何值得关注的异常值给出简明点评。</li>
-          <li class="is-new"><b>图表窗口自由拖拽、缩放，还能弹出</b><span class="new-tag">新增</span><span class="dash"> — </span>图表不再固定居中：拖动标题栏可移动，拖边框可缩放，还能一键"弹出"为独立浏览器窗口，方便挪到另一台显示器上。</li>
-          <li class="is-new"><b>坐标轴范围手动设置</b><span class="new-tag">新增</span><span class="dash"> — </span>横轴（时间）与纵轴（数值）都可在"自动"与"自定义"范围之间切换，切换到自定义时以当前自动范围为起点，随输入实时更新。</li>
-          <li class="is-new"><b>两种年化收益率</b><span class="new-tag">新增</span><span class="dash"> — </span>点选一个基准点后，可显示各点相对基准点的年化收益率，或相邻两点之间的链式年化收益率，适合追踪账户余额、投资回报等财务类数据。</li>
-          <li class="is-new"><b>Excel 快照历史</b><span class="new-tag">新增</span><span class="dash"> — </span>点一下"保存快照"，把当天的日期与数值追加进按文件夹、按参数保存的 Excel 历史表；"总额-时间"图表可直接读取这份历史作图——适合手动记录、无法从文档中直接提取的累计余额一类数据。</li>
+          <li><b>图表窗口自由拖拽、缩放，还能弹出</b><span class="dash"> — </span>图表不再固定居中：拖动标题栏可移动，拖边框可缩放，还能一键"弹出"为独立浏览器窗口，方便挪到另一台显示器上。</li>
+          <li><b>坐标轴范围手动设置</b><span class="dash"> — </span>横轴（时间）与纵轴（数值）都可在"自动"与"自定义"范围之间切换，切换到自定义时以当前自动范围为起点，随输入实时更新。</li>
+          <li><b>两种年化收益率</b><span class="dash"> — </span>点选一个基准点后，可显示各点相对基准点的年化收益率，或相邻两点之间的链式年化收益率，适合追踪账户余额、投资回报等财务类数据。</li>
+          <li><b>Excel 快照历史</b><span class="dash"> — </span>点一下"保存快照"，把当天的日期与数值追加进按文件夹、按参数保存的 Excel 历史表；"总额-时间"图表可直接读取这份历史作图——适合手动记录、无法从文档中直接提取的累计余额一类数据。</li>
         </ul>
       </section>
 
@@ -549,7 +556,8 @@
           <li><b>自动扫描匹配</b><span class="dash"> — </span>在某个文件夹或整个库中查找某位（或所有）已标记人物的更多照片，匹配置信度可调。</li>
           <li><b>一键安装识别引擎</b><span class="dash"> — </span>引导式安装人脸识别底层引擎，并实时显示安装进度。</li>
           <li><b>彻底删除</b><span class="dash"> — </span>一键删除某个人物及其全部标记。</li>
-          <li class="is-new"><b>拍摄地点一键查看</b><span class="new-tag">新增</span><span class="dash"> — </span>照片带有定位信息时，一键即可在 Google 地图中查看拍摄地点。</li>
+          <li><b>拍摄地点一键查看</b><span class="dash"> — </span>照片带有定位信息时，一键即可在 Google 地图中查看拍摄地点。</li>
+          <li class="is-new"><b>查找相似照片，一键清理重复</b><span class="new-tag">新增</span><span class="dash"> — </span>选一批照片、设定相似度阈值（默认 75%），DMS 会自动把连拍、重复导出等"近似重复"的照片归组，并用★推荐每组里分辨率最高、质量最好的一张；确认后原照片会链接进一个待审查文件夹，方便统一比对、清理，原文件夹不受影响。</li>
         </ul>
       </section>
 
@@ -581,7 +589,7 @@
           <li><b>远程上传链接</b><span class="dash"> — </span>生成带二维码的公开链接，让同事或外部承包商无需账号即可从任何地方将文件直接上传到项目中。</li>
           <li><b>内置安全隧道</b><span class="dash"> — </span>无需在本地做任何路由器或端口配置，远程链接即可使用。</li>
           <li><b>同一局域网直接访问</b><span class="dash"> — </span>同一 Wi-Fi 下的其他设备可直接连接，完全不依赖互联网。</li>
-          <li class="is-new"><b>手机浏览器直接浏览电脑文件</b><span class="new-tag">新增</span><span class="dash"> — </span>在手机浏览器打开同一条远程链接，即可像在电脑上一样浏览整棵文件夹树，而不只是接收单个文件。</li>
+          <li><b>手机浏览器直接浏览电脑文件</b><span class="dash"> — </span>在手机浏览器打开同一条远程链接，即可像在电脑上一样浏览整棵文件夹树，而不只是接收单个文件。</li>
         </ul>
       </section>
 
@@ -615,7 +623,7 @@
           <li><b>按文件夹加密保存凭据</b><span class="dash"> — </span>可将登录信息（网址、账号、密码）保存在特定文件夹下——例如某台设备的管理后台——只有点击"显示"时才会解密。</li>
           <li><b>分享链接自动过期</b><span class="dash"> — </span>每条"发送到手机"链接一小时后自动失效。</li>
           <li><b>密钥全部加密存储</b><span class="dash"> — </span>API Key、文件夹密码、项目密码与邮箱凭据均不会以明文形式保存。</li>
-          <li class="is-new"><b>单文件夹多组网站凭据</b><span class="new-tag">新增</span><span class="dash"> — </span>原来每个文件夹只能保存一组网站/账号/密码，现在可保存任意多组，并新增"复制用户名"按钮，无需再次连接服务器。</li>
+          <li><b>单文件夹多组网站凭据</b><span class="dash"> — </span>原来每个文件夹只能保存一组网站/账号/密码，现在可保存任意多组，并新增"复制用户名"按钮，无需再次连接服务器。</li>
         </ul>
       </section>
 
@@ -630,6 +638,8 @@
           <li><b>完整中英双语界面</b><span class="dash"> — </span>可随时一键切换语言。</li>
           <li><b>内置翻译版说明文档</b><span class="dash"> — </span>设置指南与完整用户手册均可在应用内下载，中英文皆备。</li>
           <li><b>启动自愈</b><span class="dash"> — </span>自动识别上一次异常退出遗留的进程并释放端口，而不会启动失败。</li>
+          <li class="is-new"><b>同时打开多个项目</b><span class="new-tag">新增</span><span class="dash"> — </span>可以同时开启多个 DMS 项目窗口/实例，在不同项目之间快速切换，不必每次先关掉一个再打开另一个。</li>
+          <li class="is-new"><b>文档数量不再受限</b><span class="new-tag">新增</span><span class="dash"> — </span>单个项目可保存的文档数量没有上限。</li>
         </ul>
       </section>
 
@@ -691,6 +701,7 @@
             <li>一次性 ZIP 批量导入整场拍摄</li>
             <li>保留原有拍摄文件夹结构，而不是一律按日期重新归类</li>
             <li>按拍摄日期与地点自动整理</li>
+            <li>连拍产生的近似重复照片，自动分组并推荐留哪一张</li>
             <li>将精选照片合并为一份可交付 PDF</li>
           </ul>
         </div>
@@ -698,7 +709,7 @@
 
       <footer>
         <span>DMS.app — 功能索引</span>
-        <span>根据当前代码库整理，供市场推广参考 · 2026-08-29 更新</span>
+        <span>根据当前代码库整理，供市场推广参考 · 2026-09-12 更新</span>
       </footer>
 
     </main>
@@ -718,7 +729,7 @@
     <div class="tb-fields">
       <div class="tb-field">
         <div class="tb-field-label disp">Document</div>
-        <div class="tb-field-value mono">Feature Index — rev. 2026-08-29</div>
+        <div class="tb-field-value mono">Feature Index — rev. 2026-09-12</div>
       </div>
       <div class="tb-field">
         <div class="tb-field-label disp">Storage Model</div>
@@ -790,8 +801,9 @@
           <li><b>HEIC support</b><span class="dash"> — </span>iPhone photos preview correctly without a manual conversion step.</li>
           <li><b>EXIF-aware photo filing</b><span class="dash"> — </span>reads GPS and capture date from photos, with reverse geocoding, to auto-file them by year, month, and place.</li>
           <li><b>Automatic document-date detection</b><span class="dash"> — </span>the date on a document's own first page is read at upload time and proposed right away — ready to confirm, and ready to feed the trend charts (Sheet 06) with nothing extra to type.</li>
-          <li class="is-new"><b>Voice input for descriptions</b><span class="new-tag">NEW</span><span class="dash"> — </span>dictate a photo or document's description — speech is transcribed and appended automatically, accented speech included.</li>
-          <li class="is-new"><b>Upload limit raised to 4GB</b><span class="new-tag">NEW</span><span class="dash"> — </span>the old 1GB cap could stall or fail on bulk imports of tens of thousands of files; raised to 4GB for steadier large-batch import and export.</li>
+          <li><b>Voice input for descriptions</b><span class="dash"> — </span>dictate a photo or document's description — speech is transcribed and appended automatically, accented speech included.</li>
+          <li><b>Upload limit raised to 4GB</b><span class="dash"> — </span>the old 1GB cap could stall or fail on bulk imports of tens of thousands of files; raised to 4GB for steadier large-batch import and export.</li>
+          <li class="is-new"><b>Videos auto-filed by year/month too</b><span class="new-tag">NEW</span><span class="dash"> — </span>MP4/MOV-family files read their embedded recording timestamp directly; other video formats fall back to the file's modified date — the same year/month filing rule photos already use.</li>
         </ul>
       </section>
 
@@ -806,10 +818,15 @@
           <li><b>Full in-app PDF viewer</b><span class="dash"> — </span>page navigation and zoom, plus a fuzzy "find in document" search that tolerates OCR typos and jumps straight to the highlighted match on the page.</li>
           <li><b>Download several documents to a folder</b><span class="dash"> — </span>select any set of documents and copy them out to a folder of your choice (the OS Downloads folder by default), with an option to reveal them when done.</li>
           <li><b>Rename a document from its card</b><span class="dash"> — </span>renames the file on disk and keeps the display name in sync, no separate step.</li>
-          <li><b>Combine documents into one PDF</b><span class="dash"> — </span>merge any selected scans or files into a single PDF and file it back into a folder; originals stay safely in storage. Quick merges skip the formal cover page — per-document bookmarks alone handle navigation — and every page is normalized to portrait even when a source page is landscape.</li>
+          <li><b>Combine documents into one PDF</b><span class="dash"> — </span>merge selected scans or photos into a single PDF filed back into a folder; photos are compressed first (900px longest edge, JPEG 85%) with no visible loss but up to ~100x smaller — a 136-photo contract can go from 2.3GB to about 18MB. The merged-away originals move to the recycle folder (use the Sheet 08 Databook instead if you need to keep them); quick merges skip the formal cover page, use per-document bookmarks for navigation, and normalize every page to portrait.</li>
           <li><b>Open in native app</b><span class="dash"> — </span>one click hands a document off to the default OS viewer or editor.</li>
-          <li class="is-new"><b>Drag to link an existing document</b><span class="new-tag">NEW</span><span class="dash"> — </span>in "Link existing document," drag a search or browse result straight onto a target folder to attach it — no per-item confirm click needed.</li>
-          <li class="is-new"><b>Persistent current-document highlight</b><span class="new-tag">NEW</span><span class="dash"> — </span>opening a document (in the viewer or a native app) keeps it highlighted in its folder's list, so it's easy to find again.</li>
+          <li><b>Drag to link an existing document</b><span class="dash"> — </span>in "Link existing document," drag a search or browse result straight onto a target folder to attach it — no per-item confirm click needed.</li>
+          <li><b>Persistent current-document highlight</b><span class="dash"> — </span>opening a document (in the viewer or a native app) keeps it highlighted in its folder's list, so it's easy to find again.</li>
+          <li class="is-new"><b>List / icon view, with small or large thumbnails</b><span class="new-tag">NEW</span><span class="dash"> — </span>toggle between a detailed list and a thumbnail grid; icon view adds a further Small/Large thumbnail-size toggle, and the choice is remembered.</li>
+          <li class="is-new"><b>Previous / next document</b><span class="new-tag">NEW</span><span class="dash"> — </span>click the arrows in the preview window, or just the left/right arrow keys, to step through a folder's documents without closing and reopening the viewer.</li>
+          <li class="is-new"><b>Sort by due date, modified date, and more</b><span class="new-tag">NEW</span><span class="dash"> — </span>order the document list by name, document date, due date, or date modified — no longer just filename order.</li>
+          <li class="is-new"><b>Batch rename</b><span class="new-tag">NEW</span><span class="dash"> — </span>one click renames every document in a folder to "date + first 10 characters of location + original name," pulling date and location from each document's own metadata and renaming the actual file on disk too.</li>
+          <li class="is-new"><b>Due dates &amp; "Schedule" color warnings</b><span class="new-tag">NEW</span><span class="dash"> — </span>set a due date on any document, then turn on "Schedule" mode to color-code documents and folders by urgency (red within 1 day, yellow within 1 week, blue within 2 weeks) and pop open an urgency-ranked "Documents due soon" list.</li>
         </ul>
       </section>
 
@@ -827,8 +844,8 @@
           <li><b>Structured results</b><span class="dash"> — </span>each match is split into value, unit, and description — not one raw text blob.</li>
           <li><b>Repeated-key handling</b><span class="dash"> — </span>a label that appears more than once in a document is captured as separate, numbered results.</li>
           <li><b>CSV metadata export</b><span class="dash"> — </span>every document and its metadata, one row each, ready to open in Excel.</li>
-          <li class="is-new"><b>Design-value / actual-value pair</b><span class="new-tag">NEW</span><span class="dash"> — </span>each key parameter can hold both a "design" and an "actual" reading, each with its own value, unit, and description — ready for compliance checks and deviation analysis.</li>
-          <li class="is-new"><b>Interactive preview flyout</b><span class="new-tag">NEW</span><span class="dash"> — </span>while entering or double-checking a parameter by hand, pop open a draggable, resizable preview of the source document — no more tabbing back and forth.</li>
+          <li><b>Design-value / actual-value pair</b><span class="dash"> — </span>each key parameter can hold both a "design" and an "actual" reading, each with its own value, unit, and description — ready for compliance checks and deviation analysis.</li>
+          <li><b>Interactive preview flyout</b><span class="dash"> — </span>while entering or double-checking a parameter by hand, pop open a draggable, resizable preview of the source document — no more tabbing back and forth.</li>
         </ul>
       </section>
 
@@ -842,8 +859,9 @@
           <li><b>AI-powered key extraction</b><span class="dash"> — </span>reads a document's actual page images to pull key values out of layouts that defeat text-pattern matching.</li>
           <li><b>Ask AI across the whole project</b><span class="dash"> — </span>ask a plain-language question over every document (or one folder) and get an answer with citations back to the source files.</li>
           <li><b>Guided key setup</b><span class="dash"> — </span>in-app instructions for getting and saving a Gemini API key, encrypted at rest.</li>
-          <li class="is-new"><b>DeepSeek model added</b><span class="new-tag">NEW</span><span class="dash"> — </span>choose DeepSeek alongside Gemini as the Q&amp;A engine — faster and steadier for users on mainland China networks.</li>
-          <li class="is-new"><b>Q&amp;A history saved automatically</b><span class="new-tag">NEW</span><span class="dash"> — </span>every question and answer is appended to a running PDF log kept alongside the document — searchable, and always there later.</li>
+          <li><b>DeepSeek model added</b><span class="dash"> — </span>choose DeepSeek alongside Gemini as the Q&amp;A engine — faster and steadier for users on mainland China networks.</li>
+          <li><b>Q&amp;A history saved automatically</b><span class="dash"> — </span>every question and answer is appended to a running PDF log kept alongside the document — searchable, and always there later.</li>
+          <li class="is-new"><b>Package as a PDF for any AI platform</b><span class="new-tag">NEW</span><span class="dash"> — </span>pick a batch of photos, write (or dictate and AI-polish) a request and a story, and bundle it all into one small, compressed PDF — hand it to ChatGPT, Gemini, or any vision-capable AI platform to generate a short video, an article, or anything else DMS itself doesn't produce.</li>
         </ul>
       </section>
 
@@ -858,10 +876,10 @@
           <li><b>Automatic timeline</b><span class="dash"> — </span>dates come from each document's own detected or entered date, or — failing that — from the "YYYY-MM" folder it's filed under.</li>
           <li><b>Click a point, open the document</b><span class="dash"> — </span>jump straight from a plotted value, or a row in the table beneath it, to the source document.</li>
           <li><b>Gemini trend commentary</b><span class="dash"> — </span>opt-in AI read on the trend's direction, approximate rate of change, and any outliers worth a second look.</li>
-          <li class="is-new"><b>Free-floating, resizable — and pop-out — chart window</b><span class="new-tag">NEW</span><span class="dash"> — </span>no longer fixed and centered: drag the header to move it, drag an edge to resize, or pop it out into its own browser window to drag onto a second monitor.</li>
-          <li class="is-new"><b>Manual axis ranges</b><span class="new-tag">NEW</span><span class="dash"> — </span>toggle either axis between Auto and Custom; switching to Custom starts from the current auto-fit range and updates live as you edit it.</li>
-          <li class="is-new"><b>Two annualized-return modes</b><span class="new-tag">NEW</span><span class="dash"> — </span>pick a point as the baseline to see every other point's annualized return against it, or a chained point-to-point annualized return — built for tracking account balances and investment returns.</li>
-          <li class="is-new"><b>Excel snapshot history</b><span class="new-tag">NEW</span><span class="dash"> — </span>one click on "Save snapshot" appends today's date and value to a per-folder, per-parameter Excel history file; "Total vs. time" reads it straight back into a chart — ideal for a running balance that isn't extracted from any single document.</li>
+          <li><b>Free-floating, resizable — and pop-out — chart window</b><span class="dash"> — </span>no longer fixed and centered: drag the header to move it, drag an edge to resize, or pop it out into its own browser window to drag onto a second monitor.</li>
+          <li><b>Manual axis ranges</b><span class="dash"> — </span>toggle either axis between Auto and Custom; switching to Custom starts from the current auto-fit range and updates live as you edit it.</li>
+          <li><b>Two annualized-return modes</b><span class="dash"> — </span>pick a point as the baseline to see every other point's annualized return against it, or a chained point-to-point annualized return — built for tracking account balances and investment returns.</li>
+          <li><b>Excel snapshot history</b><span class="dash"> — </span>one click on "Save snapshot" appends today's date and value to a per-folder, per-parameter Excel history file; "Total vs. time" reads it straight back into a chart — ideal for a running balance that isn't extracted from any single document.</li>
         </ul>
       </section>
 
@@ -877,7 +895,8 @@
           <li><b>Auto-scan for matches</b><span class="dash"> — </span>find more photos of a tagged person (or everyone) in a folder or the whole library, with an adjustable match-confidence threshold.</li>
           <li><b>One-click engine setup</b><span class="dash"> — </span>guided installer for the underlying face-recognition engine, with live progress.</li>
           <li><b>Clean removal</b><span class="dash"> — </span>delete a person and every one of their tags in a single action.</li>
-          <li class="is-new"><b>One-click shooting location</b><span class="new-tag">NEW</span><span class="dash"> — </span>for GPS-tagged photos, jump straight to the shooting location on Google Maps.</li>
+          <li><b>One-click shooting location</b><span class="dash"> — </span>for GPS-tagged photos, jump straight to the shooting location on Google Maps.</li>
+          <li class="is-new"><b>Find near-duplicate photos, clean up in one pass</b><span class="new-tag">NEW</span><span class="dash"> — </span>select a batch of photos and set a similarity threshold (75% by default); DMS groups burst shots and repeat exports together and marks the highest-resolution, best-quality copy in each group with a ★ recommendation. Confirm, and the group gets linked into a review folder for side-by-side comparison and cleanup — the originals' own folder is untouched.</li>
         </ul>
       </section>
 
@@ -909,7 +928,7 @@
           <li><b>Remote Upload link</b><span class="dash"> — </span>a public link with a QR code that lets a colleague or contractor upload straight into the project from anywhere, no account required.</li>
           <li><b>Built-in secure tunnel</b><span class="dash"> — </span>remote links work with no router or port configuration on your end.</li>
           <li><b>Same-network access</b><span class="dash"> — </span>other devices on the same Wi-Fi connect directly — no internet dependency at all.</li>
-          <li class="is-new"><b>Browse the full tree from a phone browser</b><span class="new-tag">NEW</span><span class="dash"> — </span>open the same remote link on a phone and browse the whole folder tree as if at the computer — not just receive one file at a time.</li>
+          <li><b>Browse the full tree from a phone browser</b><span class="dash"> — </span>open the same remote link on a phone and browse the whole folder tree as if at the computer — not just receive one file at a time.</li>
         </ul>
       </section>
 
@@ -943,7 +962,7 @@
           <li><b>Per-folder credential storage</b><span class="dash"> — </span>save a login (URL, account, password) against a specific folder — e.g. an equipment portal — decrypted only when you click reveal.</li>
           <li><b>Self-expiring share links</b><span class="dash"> — </span>every "Send to Phone" link stops working after one hour.</li>
           <li><b>Secrets encrypted at rest</b><span class="dash"> — </span>API keys, folder passwords, project passwords, and email credentials are never stored in plain text.</li>
-          <li class="is-new"><b>Multiple logins per folder</b><span class="new-tag">NEW</span><span class="dash"> — </span>a folder used to hold one website/username/password; now it can hold any number, with a one-click "copy username" that doesn't round-trip to the server.</li>
+          <li><b>Multiple logins per folder</b><span class="dash"> — </span>a folder used to hold one website/username/password; now it can hold any number, with a one-click "copy username" that doesn't round-trip to the server.</li>
         </ul>
       </section>
 
@@ -958,6 +977,8 @@
           <li><b>Fully bilingual UI</b><span class="dash"> — </span>Chinese and English throughout, switchable instantly.</li>
           <li><b>Translated guides, in-app</b><span class="dash"> — </span>setup instructions and a full user manual, downloadable in either language.</li>
           <li><b>Self-healing launch</b><span class="dash"> — </span>detects a stale or crashed prior session and clears the port automatically, rather than failing to start.</li>
+          <li class="is-new"><b>Multiple projects at once</b><span class="new-tag">NEW</span><span class="dash"> — </span>run several DMS project windows/instances side by side and switch between them freely, no need to close one before opening another.</li>
+          <li class="is-new"><b>No document count limit</b><span class="new-tag">NEW</span><span class="dash"> — </span>a project can hold an unlimited number of documents.</li>
         </ul>
       </section>
 
@@ -1019,6 +1040,7 @@
             <li>Batch ZIP import of a full shoot in one drop</li>
             <li>Mirror an existing shoot's folder structure instead of re-sorting it by date</li>
             <li>Auto-organizing by capture date and location</li>
+            <li>Near-duplicate burst shots auto-grouped, with the keeper recommended</li>
             <li>Combine selected shots into a single deliverable PDF</li>
           </ul>
         </div>
@@ -1026,7 +1048,7 @@
 
       <footer>
         <span>DMS.app — Feature Index</span>
-        <span>Compiled from the current codebase for marketing reference · rev. 2026-08-29</span>
+        <span>Compiled from the current codebase for marketing reference · rev. 2026-09-12</span>
       </footer>
 
     </main>
