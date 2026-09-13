@@ -149,6 +149,15 @@
     .tb-fields{grid-template-columns:repeat(2,1fr);}
     .tb-field:nth-child(2){border-right:none;}
   }
+  .dl-row{ display:flex; gap:10px; flex-wrap:wrap; padding:16px 26px 20px; }
+  .dl-btn{
+    display:flex; align-items:center; gap:8px; padding:10px 16px;
+    background:var(--blue); color:#fff; text-decoration:none; font-weight:600; font-size:14px;
+    border:1.5px solid var(--blue);
+  }
+  .dl-btn:hover{ opacity:.9; }
+  .dl-btn .sub{ font-weight:400; opacity:.85; font-size:12px; }
+  .dl-btn.secondary{ background:transparent; color:var(--ink); border-color:var(--ink); }
 
   /* ---- layout: tab index + sheets ---- */
   .layout{
@@ -365,6 +374,15 @@
     nav.index a{transition:color .15s ease,border-color .15s ease;}
   }
 
+  @media print{
+    .langtoggle, .dl-row, nav.index{ display:none !important; }
+    .layout{ display:block !important; }
+    body{ background:#fff; }
+    .sheet{ break-inside:auto; }
+    .flist > li, .aud-card{ break-inside:avoid; page-break-inside:avoid; }
+    a{ color:var(--ink); text-decoration:none; }
+  }
+
   /* ---- language blocks ---- */
   html[data-lang="zh"] .lang-en{display:none;}
   html[data-lang="en"] .lang-zh{display:none;}
@@ -404,6 +422,10 @@
         <div class="tb-field-label disp">分页</div>
         <div class="tb-field-value mono">01–12 + 受众索引</div>
       </div>
+    </div>
+    <div class="dl-row">
+      <a class="dl-btn secondary" href="DMS_Feature_Index-260912-CN.pdf">下载中文功能索引 PDF <span class="sub">DMS_Feature_Index-260912-CN.pdf</span></a>
+      <a class="dl-btn secondary" href="DMS_Feature_Index-260912-EN.pdf">下载英文功能索引 PDF <span class="sub">DMS_Feature_Index-260912-EN.pdf</span></a>
     </div>
   </div>
 
@@ -743,6 +765,10 @@
         <div class="tb-field-label disp">Sheets</div>
         <div class="tb-field-value mono">01–12 + Audience Index</div>
       </div>
+    </div>
+    <div class="dl-row">
+      <a class="dl-btn secondary" href="DMS_Feature_Index-260912-CN.pdf">Download Feature Index PDF (Chinese) <span class="sub">DMS_Feature_Index-260912-CN.pdf</span></a>
+      <a class="dl-btn secondary" href="DMS_Feature_Index-260912-EN.pdf">Download Feature Index PDF (English) <span class="sub">DMS_Feature_Index-260912-EN.pdf</span></a>
     </div>
   </div>
 
